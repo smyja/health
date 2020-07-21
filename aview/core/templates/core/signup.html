@@ -1,0 +1,109 @@
+{% extends 'core/base.html' %} {% block content %}
+<form method="post">{%csrf_token%}
+    <div class="form__block">
+
+
+
+
+        <div class="form__item">
+            <label Class="dropdown-field-label" for="Application_CountryOfResidence">Country of Residence</label> {{form.country}}
+
+            <div class="form__item">
+                <div class="field field--small">
+                    <label class="field__label" for="Application_Title">Title</label> {{form.title}}
+
+                </div>
+                <div class="field field--large">
+
+                    <label class="field__label" for="Application_FirstName">First Name</label> {{form.first_name}}
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form__item">
+                <div class="field">
+                    <label for="Application_LastName" id="Application_LastName-label">Last Name</label> {{form.last_name}}
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="form__item">
+                <div class="field">
+                    <label for="Application_DateOfBirth" id="Application_DateOfBirth-label">Date of Birth</label> {{form.birth}} <input class="form-control input--text " data-datable="ddmmyyyy" data-datable-divider="/" data-val="true" data-val-required="Please enter your date of birth. You need to be over 18."
+                        id="Application_DateOfBirth" name="Application.DateOfBirth" placeholder="dd/mm/yyyy" type="text" value="" />
+                </div>
+
+
+                <span class="field-validation-valid" data-valmsg-for="Application.DateOfBirth" data-valmsg-replace="true"></span>
+            </div>
+
+
+
+
+
+
+            <div class="form__item">
+                <div class="field">
+                    <label for="Application_Email" id="Application_Email-label">Email Address</label> {{form.email}}
+                </div>
+
+                <span class="field-validation-valid" data-valmsg-for="Application.Email" data-valmsg-replace="true"></span>
+            </div>
+
+
+
+
+
+
+            <div class="form__item">
+                <div class="field">
+                    <label for="Application_PrimaryPhoneNumber" id="Application_PrimaryPhoneNumber-label">Phone
+                        Number</label>{{form.phonenumber}} </div>
+
+
+                <span class="field-validation-valid" data-valmsg-for="Application.PrimaryPhoneNumber" data-valmsg-replace="true"></span>
+            </div>
+
+
+
+
+            <input id="Application_PreviousPhonePrefix" name="Application.PreviousPhonePrefix" type="hidden" value="" />
+
+
+
+            <div class="form__item">
+                <label for="Application_Username_Create_Username">Create Username</label>
+                <div class="form-control input--password hideShowPassword-field">{{form.username}}</div> <span class="field-validation-valid" data-valmsg-for="Application.Username" data-valmsg-replace="true"></span>
+                <div id="usernameBox" class="password__info ">
+                    <ul class="password__list">
+                        <li id="usr__length" class="password__list-item">8-50 characters</li>
+                        <li id="usr__symbol" class="password__list-item">No symbols or special characters.</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="form__item">
+                <label for="Application_Password_Create_Password">Create Password</label> {{form.password1}}
+            </div>
+            <div class="form__item">
+                <label for="Application_Password_Create_Password">Confirm Password</label> {{form.password2}}
+            </div>
+
+            <div class="form__block">
+
+                <button class="btn btn--primary btn--wide" type="submit">Sign up</button>
+
+            </div>
+
+</form>
+{{form.errors}} {% endblock %}
