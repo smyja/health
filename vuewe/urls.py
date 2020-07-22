@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import path, include
-
+from django.contrib.auth import views as auth_views
 from aview.core.views import *
 
 urlpatterns = [
@@ -27,5 +27,8 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('admin/', admin.site.urls),
-    
+    path('forgot_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
+    path('forgot_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('forgot/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('forgot_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 ]
