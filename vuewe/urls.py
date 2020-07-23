@@ -27,8 +27,11 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
     path('admin/', admin.site.urls),
-    path('forgot_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
-    path('forgot_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('forgot_password/',
+     auth_views.PasswordResetView.as_view(template_name="core/forgotpassword.html"), 
+    name="reset_password"),
+    path('forgot_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name ="core/paswordsent.html"), 
+    name="password_reset_done"),
     path('forgot/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path('forgot_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 ]
