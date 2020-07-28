@@ -16,38 +16,91 @@
 
 <body>
     <header>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="color: rgb(99, 186, 134); font-size: 24px; padding-top: 10px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet"
-            viewbox="0 0 24 24" class="iconify" data-inline="false" data-icon="eva:arrow-back-fill">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+            focusable="false" width="1em" height="1em"
+            style="color: rgb(99, 186, 134); font-size: 24px; padding-top: 10px; transform: rotate(360deg);"
+            preserveAspectRatio="xMidYMid meet" viewbox="0 0 24 24" class="iconify" data-inline="false"
+            data-icon="eva:arrow-back-fill" id="back_icon">
             <path fill="currentColor"
                 d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23a1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z">
             </path>
         </svg>
 
-        <h1>Privacy</h1>
+        <h1 id="head_name">Forgot Password</h1>
 
 
 
     </header>
     <div class="line "></div>
+    <div id="ajaxContent">
 
+        <h2>This is Privacy page.</h2>
 
-
+    </div>
 
     <footer class="cl ">
         <div class="liner "></div>
         <ul>
             <li>
-                <a href="{% url 'terms' %}" class="link ">Terms</a>
-                <a href="{% url 'privacy' %}">Privacy</a>
-                <a href="{% url 'about' %}">About</a>
+                <a class="link" id="termsLink">Terms</a>
+                <a class="link" id="privacyLink">Privacy</a>
+                <a class="link" id="aboutLink">About</a>
             </li>
         </ul>
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="custom.js"></script> -->
 
+    <script>
 
+        $("#termsLink").click(e => {
+            e.preventDefault();
+            history.pushState({ "page": "terms" }, '', '/terms');
+            $('#ajaxContent').load('terms #ajaxContent');
+            $("#head_name").html("Terms")
+        });
+
+        $("#aboutLink").click(e => {
+            e.preventDefault();
+            history.pushState({ "page": "about" }, '', '/about');
+            $('#ajaxContent').load('about #ajaxContent');
+            $("#head_name").html("About")
+        });
+
+        $("#privacyLink").click(e => {
+            e.preventDefault();
+            history.pushState({ "page": "privacy" }, '', '/privacy');
+            $('#ajaxContent').load('privacy #ajaxContent');
+            $("#head_name").html("Privacy")
+        });
+
+        $("#back_icon").click(e => {
+            history.back();
+        });
+
+        window.addEventListener('popstate', function (e) {
+            console.log(e.state.page)
+            if (e.state.page == 'terms') {
+                $('#ajaxContent').load("terms #ajaxContent");
+                $("#head_name").html("Terms")
+            }
+            if (e.state.page == 'privacy') {
+                $('#ajaxContent').load('privacy #ajaxContent');
+                $("#head_name").html("Privacy")
+            }
+            if (e.state.page == 'about') {
+                $('#ajaxContent').load('about #ajaxContent');
+                $("#head_name").html("About")
+            }
+            if (e.state.page === null) {
+                $('#ajaxContent').load('../forgotpassword #ajaxContent')
+                $("#head_name").html("Forgot Password")
+            }
+        });
+
+        history.replaceState({ page: null }, '', './');
+
+    </script>
 
 </body>
-
-
-</html>

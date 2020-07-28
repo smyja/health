@@ -22,7 +22,7 @@ from aview.core.views import *
 urlpatterns = [
     path('', homepage, name='homepage'),
     path('dashboard/', include('aview.dashboard.urls')),
-    path('signup/', signup_view, name="signup"),
+   
     path('signup/', signup_view, name="signup"),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name = 'logout'),
@@ -31,8 +31,12 @@ urlpatterns = [
     path('privacy/', privacy, name='privacy'),
     path('admin/', admin.site.urls),
     path('forgot_password/',
-     auth_views.PasswordResetView.as_view(template_name="core/forgotpassword.html"), 
+         auth_views.PasswordResetView.as_view(
+             template_name="core/forgotpassword.html"),
     name="reset_password"),
+        path('forget/',
+     auth_views.PasswordResetView.as_view(template_name="core/forgotpassword.html"), 
+    name="resetPassword"),
     path('forgot_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name ="core/paswordsent.html"), 
     name="password_reset_done"),
     path('forgot/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
