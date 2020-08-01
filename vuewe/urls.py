@@ -28,6 +28,7 @@ urlpatterns = [
     path('logout/', logout_user, name = 'logout'),
     path('about/', about, name = 'about'),
     path('terms/', terms, name = 'terms'),
+    path('hospitaladmin/', hospital , name='hospital'),
     path('privacy/', privacy, name='privacy'),
     path('admin/', admin.site.urls),
     path('forgot_password/',

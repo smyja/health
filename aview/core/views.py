@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import SignUpForm
 from django.shortcuts import render, redirect
 from .models import Profile
+from .decorators import allowed_users
 from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
@@ -70,4 +71,8 @@ def terms(request):
 def privacy(request):
     return render(request, 'core/privacy.html')
 
+@login_required
+@allowed_users
+def hospital(request):
+    return render(request, 'core/hospital.html')
 
