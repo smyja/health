@@ -21,6 +21,8 @@ from aview.core.views import *
 
 urlpatterns = [
     path('', homepage, name='homepage'),
+    path('sent/', activation_sent_view, name="activation_sent"),
+    path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
     path('dashboard/', include('aview.dashboard.urls')),
    
     path('signup/', signup_view, name="signup"),

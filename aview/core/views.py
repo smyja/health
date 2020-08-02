@@ -7,6 +7,19 @@ from .decorators import allowed_users
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_text
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from django.utils.http import urlsafe_base64_decode
+from .tokens import account_activation_token
+from django.template.loader import render_to_string
+
+from .forms import SignUpForm
+from .tokens import account_activation_token
 # Create your views here.
 def homepage(request):
     return render(request, 'core/frontpage.html')
@@ -52,9 +65,20 @@ def signup_view(request):
 
         user.profile.country = form.cleaned_data.get('country')
         user.profile.phonenumber = form.cleaned_data.get('phonenumber')
-        user.is_active = True
+        user.is_active = False
 
         user.save()
+        current_site = get_current_site(request)
+        subject = 'Please Activate Your Account'
+        message = render_to_string('core/activation_request.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': account_activation_token.make_token(user),
+        })
+        user.email_user(subject, message)
+        return redirect('activation_sent')
+
         username = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
         messages.success(request, 'Account was created for ' + username)
@@ -64,6 +88,11 @@ def signup_view(request):
     else:
         form = SignUpForm()
     return render(request, 'core/signup.html', {'form': form})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('homepage')
 
 def logout_user(request):
     logout(request)
@@ -86,3 +115,23 @@ def privacy(request):
 def hospital(request):
     return render(request, 'core/hospital.html')
 
+
+def activation_sent_view(request):
+    return render(request, 'core/activation_sent.html')
+
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.profile.signup_confirmation = True
+        user.save()
+        login(request, user)
+        return redirect('homepage')
+    else:
+        return render(request, 'core/activation_invalid.html')

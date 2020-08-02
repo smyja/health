@@ -15,6 +15,7 @@ class Profile(models.Model):
     amount = models.FloatField(default=20, null=True)
     country = models.CharField(max_length=255, null=True)
     phonenumber = models.CharField(max_length=20, null=True)
+    signup_confirmation = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
