@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from .models import Profile
 from .decorators import allowed_users
 from django.contrib import messages
-
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def homepage(request):
@@ -22,8 +22,18 @@ def login_user(request):
             return redirect('login')
         else:
             login(request, user)
+            group = None
+            if user.groups.exists():
+                group = request.user.groups.all()[0].name
+            if group == 'Hospitals':
+                
+                return redirect('hospital')
+            
+
+            
 
             return redirect('dashboard')
+
     else:
         context = {}
 
