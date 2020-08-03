@@ -25,6 +25,7 @@ urlpatterns = [
     path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
     path('dashboard/', include('aview.dashboard.urls')),
    
+   
     path('signup/', signup_view, name="signup"),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name = 'logout'),

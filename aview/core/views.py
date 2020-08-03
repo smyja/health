@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout ,get_user_model
 from .forms import SignUpForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
 from .decorators import allowed_users
 from django.contrib import messages
@@ -94,9 +94,6 @@ def logout_user(request):
     logout(request)
     return redirect('homepage')
 
-def logout_user(request):
-    logout(request)
-    return redirect('homepage')
 
 
 def about(request):
@@ -135,3 +132,15 @@ def activate(request, uidb64, token):
         return redirect('homepage')
     else:
         return render(request, 'core/activation_invalid.html')
+
+def create_appointment(request, id):
+    if request.user.is_authenticated():
+        user = get_object_or_404(User, id=id)
+        appoint = Appointment.objects.get_or_create(from_user=request.user, to_user=user).first()
+        appoint.delete()
+        return
+
+
+
+    
+
