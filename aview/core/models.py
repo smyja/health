@@ -52,11 +52,7 @@ class Appointment(models.Model):
     
 
 
-    def hospitalist(self):
-        return self.hospital.all()
-
-    def patientlist(self):
-        return self.patient.all().count()
+   
 
 
 
