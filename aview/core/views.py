@@ -133,13 +133,6 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'core/activation_invalid.html')
 
-def create_appointment(request, id):
-    if request.user.is_authenticated():
-        user = get_object_or_404(User, id=id)
-        appoint = Appointment.objects.get_or_create(from_user=request.user, to_user=user).first()
-        appoint.delete()
-        return
-
 
 
     

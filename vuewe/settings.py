@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sys
 import environ
 env = environ.Env(
     # set casting, default value
@@ -47,7 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'aview.core',
-    'aview.dashboard'
+    'aview.dashboard',
+    'simple_mail',
+    'ckeditor',
+    'modeltranslation'
 ]
 
 MIDDLEWARE = [
@@ -88,9 +92,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+         'TEST': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        },
+    
     }
 }
 
+
+if 'test' in sys.argv:
+    DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -139,3 +151,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+SIMPLE_MAIL_USE_CKEDITOR = True
+SIMPLE_MAIL_USE_MODELTRANSLATION = True
+SIMPLE_MAIL_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
