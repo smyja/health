@@ -1,0 +1,127 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css'%}">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap " rel="stylesheet ">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+    <style>
+        .hidden {
+            display: none;
+        }
+        
+        .showed {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="back">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="color: rgb(99, 186, 134); font-size: 24px; padding-top: 10px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet"
+                viewbox="0 0 24 24" class="iconify" data-inline="false" data-icon="eva:arrow-back-fill">
+            <path fill="currentColor"
+                d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23a1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z">
+            </path>
+        </svg>
+        </div>
+    </header>
+
+    <div id="main"></div>
+
+
+
+    <footer class="cl ">
+        <div class="liner "></div>
+        <ul>
+            <li>
+                <a href="{% url 'terms' %}" class="link" id="terms-page">Terms</a>
+                <a href=" {% url 'privacy' %}" class="link " id="privacy-page">Privacy</a>
+                <a href="{% url 'about' %} " class="link " id="about-page">About</a>
+            </li>
+        </ul>
+    </footer>
+
+
+
+    <script>
+        let term = $.get('/terms', e => e)
+        let privacy = $.get('/privacy', e => e)
+        let about = $.get('/about', e => e)
+        let forget_password = $.get('/forget', e => e)
+
+
+        if (history.state == null) {
+            $.get('/forget', e => {
+                document.getElementById('main').innerHTML = e
+            })
+        }
+        $(" #terms-page ").click(e => {
+            e.preventDefault()
+            history.pushState({
+                "page ": "terms "
+            }, '', '/terms')
+            $("#main ").html(term.responseText)
+        })
+
+
+        $("#privacy-page ").click(e => {
+            e.preventDefault()
+            history.pushState({
+                "page ": "privacy "
+            }, '', '/privacy')
+            $("#main ").html(privacy.responseText)
+        })
+
+        $("#about-page ").click(e => {
+            e.preventDefault()
+            history.pushState({
+                "page ": "about "
+            }, '', '/about')
+            $("#main ").html(about.responseText)
+        })
+
+
+        $("#back ").click(e => {
+            history.back()
+        })
+        window.addEventListener('popstate', function(e) {
+            if (e.state.page == 'terms') {
+                $("#main ").html(term.responseText)
+            }
+            if (e.state.page == 'privacy') {
+                $("#main ").html(privacy.responseText)
+            }
+            if (e.state.page == null) {
+                $.get('/forget', e => {
+                    document.getElementById('main').innerHTML = e
+                })
+            }
+        })
+        history.replaceState({
+            page: null
+        }, 'default', '/forgot_password')
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
