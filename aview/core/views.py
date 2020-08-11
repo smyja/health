@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout ,get_user_model
 from .forms import SignUpForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Profile
+from .models import Profile, Appointment
 from .decorators import allowed_users
 from django.contrib import messages
 from django.http import HttpResponse
@@ -110,7 +110,12 @@ def privacy(request):
 @login_required
 @allowed_users
 def hospital(request):
-    return render(request, 'core/hospital.html')
+    appointments = Appointment.objects.filter(hospital=request.user.profile).exclude(status='approved')
+    
+    context = {
+        'appointments': appointments,
+    }
+    return render(request, 'core/hospital.html', context)
 
 
 def activation_sent_view(request):

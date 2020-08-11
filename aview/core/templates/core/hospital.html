@@ -16,6 +16,17 @@
 
 <body>
     <h1 class="big">Welcome {{request.user.username}}</h1>
+
+    
+    {% for appointment in appointments %}
+        {{appointment.patient}}
+        <form action="{% url 'approve' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{appointment.id}}">
+            <button>Approve</button>
+        </form>
+    {% endfor %}
+        
 </body>
 
 </html>

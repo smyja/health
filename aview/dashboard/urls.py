@@ -8,6 +8,4 @@ urlpatterns = [
     path('profile', profile, name='profile'),
     re_path(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$',
         bookapp, name='bookapp'),
-    re_path(r'^acceptapp/(?P<operation>.+)/(?P<pk>\d+)/$',
-        acceptapp, name='acceptapp')
 ]

@@ -13,9 +13,7 @@ def allowed_users(view_func):
         if request.user.groups.exists():
             group = request.user.groups.all()[0].name
         
-        if group == 'Hospitals':
-            return render(request, 'core/hospital.html')
-        else:
+        if group != 'Hospitals':
             return HttpResponse('You are not authorised to access this page')
 
         return view_func(request, *args, **kwargs)

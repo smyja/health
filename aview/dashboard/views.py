@@ -1,6 +1,6 @@
 from django.dispatch import receiver, Signal
 from django.db.models.signals import post_save
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -27,21 +27,25 @@ def profile(request):
 def bookapp(request, operation, pk):
      hospital = Profile.objects.get(pk=pk)
      
-    
-    
      if operation == 'add':
         Appointment.create_appointment(hospital,request.user.profile)
         
         return HttpResponse('You have booked an appointment')
      
 
-def acceptapp(request, operation, pk):
-    
+def acceptapp(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        appointment = Appointment.objects.get(id=id)
+   
+        appointment.status = 'approved'
+        appointment.save()
+
     # patient = Profile.objects.get(pk=pk)
     # if operation == 'update':
     #     Appointment.accept_appointment(patient, status)
 
-        return HttpResponse('You have accepted an appointment')
+    return redirect('hospital')
 
 
 

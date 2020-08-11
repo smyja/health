@@ -46,7 +46,7 @@ class Appointment(models.Model):
         try:
             appointment,created = cls.objects.get_or_create(patient=patient,hospital=hospital)
         except cls.MultipleObjectsReturned:
-            appointment = cls.objects.filter(patient).order_by('id').first()
+            appointment = cls.objects.filter(patient).order_by('id')
 
         appointment.hospital.appointment_with.add(patient.user)
         
