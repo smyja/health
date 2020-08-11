@@ -1,11 +1,12 @@
 from django.dispatch import receiver, Signal
 from django.db.models.signals import post_save
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from aview.core.models import Profile, Appointment
 from django.views.generic import ListView
-
+from aview.core.signals import *
 # Create your views here.
 @login_required(login_url='/login/')
 def dashboard(request):
@@ -21,6 +22,28 @@ def profile(request):
     profile = Profile.objects.get(user=request.user)
     context = {'profile': profile}
     return render(request, 'dashboard/profile.html', context)
+
+
+def bookapp(request, operation, pk):
+     hospital = Profile.objects.get(pk=pk)
+     
+    
+    
+     if operation == 'add':
+        Appointment.create_appointment(hospital,request.user.profile)
+        
+        return HttpResponse('You have booked an appointment')
+     
+
+def acceptapp(request, operation, pk):
+    
+    # patient = Profile.objects.get(pk=pk)
+    # if operation == 'update':
+    #     Appointment.accept_appointment(patient, status)
+
+        return HttpResponse('You have accepted an appointment')
+
+
 
 
 # book = Signal(providing_args=['booking'])

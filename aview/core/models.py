@@ -7,7 +7,7 @@ from django.conf import settings
 
 class Profile(models.Model):
     username = models.CharField(max_length=50, blank=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     last_name = models.CharField(max_length=100, blank=True)
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
@@ -17,7 +17,7 @@ class Profile(models.Model):
     amount = models.FloatField(default=20, null=True)
     country = models.CharField(max_length=255, null=True)
     phonenumber = models.CharField(max_length=20, null=True)
-    appointment_with = models.ManyToManyField(User, related_name='appointment_with', blank=True)
+    appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
 
 
     def __str__(self):
@@ -28,28 +28,50 @@ class Profile(models.Model):
 
 
 
+
+
 STATUS_CHOICES = (
     ('book', 'book'),
     ('approved', 'approved'),
 )
-@receiver(post_save, sender=User)
-def update_profile_signal(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
-
-
 class Appointment(models.Model):
-    patient = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='patient')
-    hospital = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hospital')
-
+    patient = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='patientt', null=True)
+    hospital = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='hospital', null=True)
     created = models.DateTimeField(auto_now_add=True)
+    
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='none')
+
+    @classmethod
+    def create_appointment(cls, hospital,patient):
+        try:
+            appointment,created = cls.objects.get_or_create(patient=patient,hospital=hospital)
+        except cls.MultipleObjectsReturned:
+            appointment = cls.objects.filter(patient).order_by('id').first()
+
+        appointment.hospital.appointment_with.add(patient.user)
+        
+    # @classmethod
+    # def accept_appointment(cls, request,patient,status):
+    #     try:
+    #         appointment,created = cls.objects.get_or_create(status=status)
+    #     except cls.MultipleObjectsReturned:
+    #         appointment = cls.objects.filter(patient=patient,hospital=request.user.profile)
+
+    #     appointment.status.appointment_with.update(status='approved')
+        
+   
+
+
+        
+        
+        
+
+
+
+
 
     def __str__(self):
         return f"{self.patient}-{self.hospital}-{self.status}"
-
-    
 
 
    

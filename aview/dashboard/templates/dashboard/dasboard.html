@@ -72,7 +72,7 @@
         </div>
         </div>
 
-        <input type="hidden" name="profile_pk" value={{obj.pk}}>
+        <input type="hidden" name="profile" value={{obj.pk}}>
         <div class="boxyy" style="padding: 70px;">
             <ul>
                 {% for g in w %}
@@ -99,9 +99,13 @@
                             </svg>
                             <h1 class="buto ">{{g}}</h1>
                             <h1 class="lau ">10PM - 5PM</h1>
-                            <div class="bttn ">
-                                <h1 class="laud ">BOOK</h1>
-                            </div>
+
+                            <a href="{% url 'bookapp' operation='add' pk=g.pk %}">
+                                <div class="bttn">
+                                    <h1 class="laud">BOOK</h1>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 </li>
@@ -109,10 +113,10 @@
             </ul>
 
         </div>
+        <!-- {% for z in y %} {{z}}{% endfor %} -->
 
 
-
-
+        <!-- {{g.pk}} -->
     </section>
     <script>
         $("button,a ").click(function() {
