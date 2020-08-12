@@ -38,7 +38,7 @@ def acceptapp(request):
     if request.method == 'POST':
         id = request.POST['id']
         appointment = Appointment.objects.get(id=id)
-        
+      
         appointment.status = 'approved'
         
         appointment.save()
@@ -57,8 +57,9 @@ def bookin(request):
         hospital = Profile.objects.get(user_id=user_id)
         addapp = Appointment(hospital=hospital, patient=request.user.profile)
         addapp.save()
-
-        return HttpResponse('You have booked an appointment')
+        context = {'hospital': hospital}
+        
+        return render(request, 'core/booked.html', context)
 
 
 

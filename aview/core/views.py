@@ -111,9 +111,13 @@ def privacy(request):
 @allowed_users
 def hospital(request):
     appointments = Appointment.objects.filter(hospital=request.user.profile).exclude(status='approved')
-    
+    appointment_number = Appointment.objects.filter(
+        hospital=request.user.profile).exclude(status='approved').count()
+    patients = Profile.objects.get(user=request.user).appointment_with.all()
     context = {
         'appointments': appointments,
+        'appointment_number': appointment_number,
+        'patient': patients,
     }
     return render(request, 'core/hospital.html', context)
 
