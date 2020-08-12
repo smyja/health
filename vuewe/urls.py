@@ -18,14 +18,15 @@ from django.contrib.auth import views
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from aview.core.views import *
-from aview.dashboard.views import acceptapp
+from aview.dashboard.views import acceptapp,bookin
 
 urlpatterns = [
     path('', homepage, name='homepage'),
     path('sent/', activation_sent_view, name="activation_sent"),
     path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
     path('dashboard/', include('aview.dashboard.urls')),
-    path('approve/', acceptapp, name='approve'),
+    path('approve/', acceptapp, name = 'approve'),
+    path('book/', bookin, name='bookin'),
     path('signup/', signup_view, name="signup"),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name = 'logout'),

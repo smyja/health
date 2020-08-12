@@ -17,7 +17,7 @@ class Profile(models.Model):
     amount = models.FloatField(default=20, null=True)
     country = models.CharField(max_length=255, null=True)
     phonenumber = models.CharField(max_length=20, null=True)
-    appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
+    appointment_with = models.ManyToManyField(User, related_name='appontment_with',blank=True)
 
 
     def __str__(self):
@@ -40,33 +40,6 @@ class Appointment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='none')
-
-    @classmethod
-    def create_appointment(cls, hospital,patient):
-        try:
-            appointment,created = cls.objects.get_or_create(patient=patient,hospital=hospital)
-        except cls.MultipleObjectsReturned:
-            appointment = cls.objects.filter(patient).order_by('id')
-
-        appointment.hospital.appointment_with.add(patient.user)
-        
-    # @classmethod
-    # def accept_appointment(cls, request,patient,status):
-    #     try:
-    #         appointment,created = cls.objects.get_or_create(status=status)
-    #     except cls.MultipleObjectsReturned:
-    #         appointment = cls.objects.filter(patient=patient,hospital=request.user.profile)
-
-    #     appointment.status.appointment_with.update(status='approved')
-        
-   
-
-
-        
-        
-        
-
-
 
 
 

@@ -31,22 +31,34 @@ def bookapp(request, operation, pk):
         Appointment.create_appointment(hospital,request.user.profile)
         
         return HttpResponse('You have booked an appointment')
-     
+
+         
 
 def acceptapp(request):
     if request.method == 'POST':
         id = request.POST['id']
         appointment = Appointment.objects.get(id=id)
-   
+        
         appointment.status = 'approved'
+        
         appointment.save()
+        
 
-    # patient = Profile.objects.get(pk=pk)
+    # patient = Profile.appointment.patient.save()objects.get(pk=pk)
     # if operation == 'update':
     #     Appointment.accept_appointment(patient, status)
 
     return redirect('hospital')
 
+
+def bookin(request):
+    if request.method == 'POST':
+        user_id = request.POST['id']
+        hospital = Profile.objects.get(user_id=user_id)
+        addapp = Appointment(hospital=hospital, patient=request.user.profile)
+        addapp.save()
+
+        return HttpResponse('You have booked an appointment')
 
 
 
