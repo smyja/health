@@ -16,8 +16,9 @@
 
 <body>{% for patients in patient %} {{patients}}{% endfor %}
     <h1 class="big">Welcome {{request.user.username}}</h1>
-    <h1 class="cer ">Your have {{appointment_number}} pending booking</h1>
-    {{profile.appointment_with}} {% for appointment in appointments %} {{appointment.patient}}
+    <h1 class="cer ">You have {{appointment_number}} pending booking</h1>
+    {{profile.appointment_with}} {% for appointment in appointments %}
+    <a href="{% url 'profilepk' pk=appointment.patient.pk %}">{{appointment.patient}}</a>
     <form action="{% url 'approve' %}" method="post">
         {% csrf_token %}
         <input type="hidden" name="id" value="{{appointment.id}}">

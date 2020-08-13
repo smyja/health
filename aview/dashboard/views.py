@@ -18,9 +18,10 @@ def dashboard(request):
     return render(request, 'dashboard/dasboard.html',{'w':w})
 
 
-def profile(request):
-    profile = Profile.objects.get(user=request.user)
-    context = {'profile': profile}
+def profile(request,pk):
+    profile = Profile.objects.get(pk=pk)
+    profil = Profile.objects.get(user=request.user)
+    context = {'profile': profile,'profil':profil}
     return render(request, 'dashboard/profile.html', context)
 
 
