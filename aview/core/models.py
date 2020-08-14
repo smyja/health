@@ -16,6 +16,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=100, blank=True)
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
+    full_name = models.CharField(max_length=128, blank=True)
     email = models.EmailField(max_length=150)
     signup_confirmation = models.BooleanField(default=False)
     title = models.CharField(max_length=255, null=True)
@@ -30,7 +31,9 @@ class Profile(models.Model):
         self.slug = slugify(f"{self.last_name}-{self.first_name}")
         super(Profile, self).save(*args, **kwargs)
 
-
+    def save(self, *args, **kw):
+        self.full_name = '{0} {1}'.format(self.first_name, self.last_name)
+        super(Profile, self).save(*args, **kw)
 
     def __str__(self):
         return self.user.username
