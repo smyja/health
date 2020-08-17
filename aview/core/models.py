@@ -20,8 +20,6 @@ class Profile(models.Model):
     email = models.EmailField(max_length=150)
     signup_confirmation = models.BooleanField(default=False)
     title = models.CharField(max_length=255, null=True)
-    margin = models.FloatField(default=20, null=True)
-    amount = models.FloatField(default=20, null=True)
     country = models.CharField(max_length=255, null=True)
     phonenumber = models.CharField(max_length=20, null=True)
     appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
