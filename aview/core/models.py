@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.utils.text import slugify
 
-get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
+# get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
 
 
 # superusers = User.objects.filter(is_superuser=True)

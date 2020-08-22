@@ -95,8 +95,10 @@ DATABASES = {
         #  'TEST': {
         #     'ENGINE': 'django.db.backends.sqlite3',
         #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
-            'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
+        #     'PASSWORD': 'Akpobi101', 'HOST': 'localhost', 'PORT': '5432',
+          'ENGINE': 'django.db.backends.postgresql', 'NAME': 'Navaradb', 'USER': 'navara',
+        'PASSWORD': 'Akpobi101', 'HOST': 'database-1.cfwr1aitwzcr.us-east-1.rds.amazonaws.com', 'PORT': '5432',
 
         
     
