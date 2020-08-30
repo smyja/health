@@ -1,30 +1,168 @@
 {%load static%}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
-    <link rel="stylesheet" href="{% static 'styles/main.css'%}">
-    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap " rel="stylesheet ">
+    <title>Navara Dashboard</title>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'styles/style.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/responsive.css'%}">
+
 </head>
 
-<body>{% for patients in patient %} {{patients}}{% endfor %}
-    <h1 class="big">Welcome {{request.user.username}}</h1>
-    <h1 class="cer ">You have {{appointment_number}} pending booking</h1>
-    {{profile.appointment_with}} {% for appointment in appointments %}
-    <a href="{% url 'profilepk' slug=appointment.patient.slug pk=appointment.patient.pk %}">{{appointment.patient.full_name}}</a>
-    <form action="{% url 'approve' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="id" value="{{appointment.id}}">
-        <button>Approve</button>
-    </form>
+<body>
+    <div class="menu-btn">
+        <img src="{% static 'images/menu-bar.png'%}" alt="">
+    </div>
+
+    <div class="sidebar">
+        <div class="container">
+            <!-- Navigation -->
+            <div class="main-nav">
+                <a href="" class="logo"><span><img src="{% static 'images/logo.svg'%}" alt=""></span><span
+                        class="logo-text">Navara</span></a>
+                <ul class="main-menu">
+                    <li>
+                        <a href="#"><img class="nav-items" src="{% static 'images/home.svg'%}" alt=""><span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="nav-items" src="{% static 'images/male.svg'%}" alt=""><span>Patients</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="nav-items" src="{% static 'images/doctor.svg'%}" alt=""><span>Doctors</span> </a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="nav-items" src="{% static 'images/lab.svg'%}" alt=""><span>Lab
+                                Tests</span> </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="top-content">
+        <div class="container">
+            <header class="top-bar">
+                <h1>Hi,{{request.user.username}}</h1>
+                <div>
+                    <input type="text" placeholder="">
+                    <img src="{% static 'images/girl.png'%}" alt="">
+                </div>
+            </header>
+        </div>
+        <hr style="color: #dee1e1;border-top: 0px solid #151717;">
+    </div>
+    <div class="content">
+        <div class="mid-content">
+            <div class="container">
+
+
+                <div class="content">
+                    <div class="boxyy">
+
+                        <ul>
+                            <div class="fl">
+                                <li>
+                                    <h1 class="buto">Total patients</h1><span class="iconify" data-inline="false" data-icon="bx:bxs-first-aid" style="color: #63ba86; padding-left: 18px; font-size: 40px;"></span>
+                                    <h1 class="num">{{appointment_number}}
+                                    </h1>
+                                </li>
+                                <li>
+                                    <h1 class="buto">Total patients</h1><span class="iconify" data-inline="false" data-icon="bx:bxs-first-aid" style="color: #63ba86; padding-left: 18px; font-size: 40px;"></span>
+                                    <h1 class="num">7
+                                    </h1>
+                                </li>
+                            </div>
+
+
+                            <li style="height: 150px;">
+                                <div style="display: flex;padding-top: 10px;">
+                                    <h1 class="buto">Total patients</h1>
+                                    <h1 class="numm">7</h1>
+                                </div>
+                                <div style="display: flex; flex-wrap: wrap;padding-top: 10px;padding-right: 250px;">
+                                    <h1 class="buto">Non-medical staffs</h1>
+                                    <h1 class="numm" style="padding-left: 112px;">7</h1>
+                                </div>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <h2 style="font-size: 24px;font-weight: 500;color: #63BA86;margin-top: 20px;padding: 10px;margin-left: 183px;">Pending appointments</h2>
+    {% for appointment in appointments %}
+    <footer class="bottom-content">
+        <div class="appointment">
+            <div class="container">
+
+
+                <div class="appointment-box">
+                    <div class="appointment-left">
+                        <img src="{% static 'images/leaf.svg'%}" alt="">
+                        <h3><a href="{% url 'profilepk' slug=appointment.patient.slug pk=appointment.patient.pk %}" style="color: #63BA86;">{{appointment.patient.full_name}}</a>
+                        </h3>
+                        <h3>12/10/2020</h3>
+                    </div>
+                    <form action="{% url 'approve' %}" method="post"> {% csrf_token %}
+                        <div class="appointment-right">
+                            <button class="decline-btn">Decline</button>
+                            <input type="hidden" name="id" value="{{appointment.id}}"><button class="approve-btn">Approve</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </footer>
     {% endfor %}
+    <script type="text/javascript">
+        document.querySelector('.menu-btn').addEventListener('click', () => document.querySelector('.sidebar').classList.toggle('show'));
+    </script>
+    <!-- Code injected by live-server -->
+    <script type="text/javascript">
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function() {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function(msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        } else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
 
 </body>
 

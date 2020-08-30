@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.utils.text import slugify
 
-# get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
+get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
 
 
 # superusers = User.objects.filter(is_superuser=True)
@@ -25,13 +25,13 @@ class Profile(models.Model):
     appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
     slug = models.SlugField(max_length=200,null=True)
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(f"{self.last_name}-{self.first_name}")
-        super(Profile, self).save(*args, **kwargs)
-
     def save(self, *args, **kw):
         self.full_name = '{0} {1}'.format(self.first_name, self.last_name)
         super(Profile, self).save(*args, **kw)
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(f"{self.last_name}-{self.first_name}")
+        super(Profile, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.user.username
