@@ -59,7 +59,6 @@ def bookin(request):
         addapp = Appointment(hospital=hospital, patient=request.user.profile)
         addapp.save()
         context = {'hospital': hospital}
-        
         return render(request, 'core/booked.html', context)
 
 

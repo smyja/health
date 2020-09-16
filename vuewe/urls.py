@@ -18,7 +18,9 @@ from django.contrib.auth import views
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from aview.core.views import *
-from aview.dashboard.views import acceptapp,bookin
+from aview.dashboard.views import acceptapp, bookin
+
+
 
 urlpatterns = [
     path('', homepage, name='homepage'),
