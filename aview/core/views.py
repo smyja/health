@@ -11,10 +11,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_text
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from django.utils.http import urlsafe_base64_decode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
 
@@ -53,7 +51,7 @@ def login_user(request):
         return render(request, 'core/login.html', context)
 
 
-def signup_view(request):
+def addpatient(request):
     form = SignUpForm(request.POST)
     if form.is_valid():
         user = form.save()
@@ -61,9 +59,43 @@ def signup_view(request):
         user.profile.first_name = form.cleaned_data.get('first_name')
         user.profile.last_name = form.cleaned_data.get('last_name')
         user.profile.email = form.cleaned_data.get('email')
-        user.profile.title = form.cleaned_data.get('title')
+  
 
-        user.profile.country = form.cleaned_data.get('country')
+        user.profile.address = form.cleaned_data.get('address')
+        user.profile.phonenumber = form.cleaned_data.get('phonenumber')
+        user.is_active = True
+
+        user.save()
+
+
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        messages.success(request, 'Account was created for ' + username)
+        user = authenticate(username=username, password=password)
+        print(username, password, user)
+        login(request, user)
+        return redirect(f'/dashboard/profile/{user.profile.slug}/{user.pk}')
+    else:
+        form = SignUpForm()
+    return render(request, 'core/signup.html', {'form': form})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('homepage')
+
+
+def signup_view(request):
+    form = SignUpForm(request.POST)
+    if form.is_valid():
+        print ("form is valid")
+        user = form.save()
+        user.refresh_from_db()
+        user.profile.first_name = form.cleaned_data.get('first_name')
+        user.profile.last_name = form.cleaned_data.get('last_name')
+        user.profile.email = form.cleaned_data.get('email')
+        user.profile.address = form.cleaned_data.get('address')
+
         user.profile.phonenumber = form.cleaned_data.get('phonenumber')
         user.is_active = False
 
@@ -89,10 +121,6 @@ def signup_view(request):
         form = SignUpForm()
     return render(request, 'core/signup.html', {'form': form})
 
-
-def logout_user(request):
-    logout(request)
-    return redirect('homepage')
 
 
 

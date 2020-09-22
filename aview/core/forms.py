@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=100, help_text='Last Name')
     last_name = forms.CharField(max_length=100, help_text='Last Name')
-    country = forms.CharField(max_length=100, help_text='Country of residence')
     address = forms.CharField(max_length=100, help_text='address')
     phonenumber = forms.CharField(
         max_length=100, help_text='Enter Phone number')
@@ -43,12 +42,10 @@ class SignUpForm(UserCreationForm):
         self.fields['password1'].widget.attrs.update({'class': 'log swiy'})
         self.fields['password2'].widget.attrs.update({'class': 'log swiy'})
 
-
-
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'phonenumber',
-                  'email', 'password1', 'password2', 'country')
+                  'email', 'password1', 'password2', 'address')
     
  
 
