@@ -16,7 +16,7 @@ from django.utils.http import urlsafe_base64_encode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
 
-from .forms import SignUpForm
+from .forms import SignUpForm,PatientForm
 from .tokens import account_activation_token
 # Create your views here.
 def homepage(request):
@@ -52,15 +52,16 @@ def login_user(request):
 
 
 def addpatient(request):
-    form = SignUpForm(request.POST)
+    form = PatientForm(request.POST)
     if form.is_valid():
         user = form.save()
         user.refresh_from_db()
         user.profile.first_name = form.cleaned_data.get('first_name')
         user.profile.last_name = form.cleaned_data.get('last_name')
         user.profile.email = form.cleaned_data.get('email')
-  
-
+        user.profile.state = form.cleaned_data.get('state')
+        user.profile.dob = form.cleaned_data.get('dob')
+        user.profile.next_of_kin = form.cleaned_data.get('next_of_kin')
         user.profile.address = form.cleaned_data.get('address')
         user.profile.phonenumber = form.cleaned_data.get('phonenumber')
         user.is_active = True
@@ -76,7 +77,7 @@ def addpatient(request):
         login(request, user)
         return redirect(f'/dashboard/profile/{user.profile.slug}/{user.pk}')
     else:
-        form = SignUpForm()
+        form = PatientForm()
     return render(request, 'core/addpatient.html', {'form': form})
 
 

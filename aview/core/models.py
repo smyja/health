@@ -11,12 +11,14 @@ get_user_model().objects.filter(is_superuser=True).update(first_name='Super', la
 
 # superusers = User.objects.filter(is_superuser=True)
 class Profile(models.Model):
-    username = models.CharField(max_length=50, blank=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     last_name = models.CharField(max_length=100, blank=True)
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
     full_name = models.CharField(max_length=128, blank=True)
+    next_of_kin = models.CharField(max_length=100, blank=True)
+    dob = models.CharField(max_length=100, blank=True)
+    state = models.CharField(max_length=100, blank=True)
     email = models.EmailField(max_length=150)
     signup_confirmation = models.BooleanField(default=False)
     address = models.CharField(max_length=255, null=True)
