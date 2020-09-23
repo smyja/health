@@ -77,7 +77,7 @@ def addpatient(request):
         return redirect(f'/dashboard/profile/{user.profile.slug}/{user.pk}')
     else:
         form = SignUpForm()
-    return render(request, 'core/signup.html', {'form': form})
+    return render(request, 'core/addpatient.html', {'form': form})
 
 
 def logout_user(request):
