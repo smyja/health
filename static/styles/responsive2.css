@@ -1,0 +1,589 @@
+@media screen and (max-width: 375px) {
+    .menu-btn img {
+        display: block;
+        margin-top: 8px;
+        margin-right: -12px;
+    }
+    .menu-btn img:hover {
+        opacity: 0.5;
+    }
+    .top-content {
+        height: 48px;
+    }
+    .sidebar {
+        margin-top: 58px;
+        margin-left: 5px;
+        text-align: center;
+        height: 65%;
+        border-right: #ccc 1px solid;
+        opacity: 0.9;
+        padding: 15px;
+        transform: translateX(-1000px);
+        transition: transform 0.5s ease-in-out;
+    }
+    .sidebar .logo-text {
+        font-size: 1.5rem;
+        margin-right: 20px;
+    }
+    .sidebar ul li {
+        font-size: 1.4rem;
+        margin-right: 20px;
+    }
+    .sidebar.show {
+        transform: translateX(-5px);
+    }
+    .main-nav ul {
+        margin-top: 15%;
+    }
+    .main-nav ul li a {
+        padding-bottom: 1px;
+        padding-left: 0px;
+    }
+    .main-nav ul li a span {
+        margin-left: 0px;
+    }
+    .top-content {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .top-content hr {
+        margin-top: 10px;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .top-bar input[type=text] {
+        display: none;
+    }
+    .top-bar img {
+        display: none;
+    }
+    .mid-content {
+        margin-top: 58%;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .box-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .blood-group img,
+    .location img {
+        width: 60.5px;
+        height: 60.5px;
+        position: relative;
+        top: 20px;
+        left: 30%;
+    }
+    .contact-box {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+    }
+    .contact-contents {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .contact h2 {
+        margin-left: 20px;
+        font-size: 1.1rem;
+    }
+    .contact-box ul li {
+        padding: 8px;
+        margin-top: 10px;
+        font-size: 0.9rem;
+    }
+    .check-box-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 2%;
+        width: 90%;
+    }
+    .check-box-area .check-box {
+        font-size: 1rem;
+        padding: 5px 30px 0px 30px;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 1px;
+        text-align: center;
+    }
+    .right-side-content {
+        position: absolute;
+        top: 70px;
+        right: 26.3%;
+    }
+    .bottom-content {
+        margin-left: 0px;
+    }
+    .appointment-box {
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+        padding-left: 17px;
+    }
+    .appointment h2 {
+        margin-left: 20px;
+        font-size: 1.1rem;
+    }
+    .appointment-left {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .appointment-left img {
+        display: none;
+    }
+    .appointment-left h3 {
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin-top: 5px;
+        margin-left: 8px;
+    }
+    .appointment-right {
+        width: 90%;
+        text-align: center;
+    }
+    .decline-btn,
+    .approve-btn {
+        padding: 3px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        margin: 8px 0px;
+        cursor: pointer;
+        width: 54%;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width: 500px) {
+    .boxyy {
+        padding: 30px;
+    }
+    .boxyy ul {}
+    .boxyy ul li {
+        list-style: none;
+        width: 250px;
+        height: 105px;
+        background: #FFFFFF;
+        border-radius: 7px;
+        margin-right: 150px;
+        margin-bottom: 50px;
+        border: 1px solid #63BA86;
+        box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    }
+    .bas {
+        flex-basis: 40%;
+    }
+    .iconn {
+        text-align: center;
+        margin-top: 5px;
+    }
+    h1.num {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 39px;
+        /* identical to box height */
+        color: #3D8D5D;
+        text-align: initial;
+        padding-left: 150px;
+    }
+    h1.buto {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        color: #3D8D5D;
+        text-align: initial;
+        padding-left: 20px;
+    }
+    h1.numm {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        color: #3D8D5D;
+        text-align: initial;
+        padding-left: 50px;
+    }
+    .fl {
+        flex-wrap: wrap;
+    }
+    .menu-btn img {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 30px;
+    }
+    .menu-btn img:hover {
+        opacity: 0.5;
+    }
+    .top-content {
+        height: 48px;
+    }
+    .sidebar {
+        margin-top: 58px;
+        margin-left: 5px;
+        text-align: center;
+        width: 100%;
+        height: 65%;
+        border-right: #ccc 1px solid;
+        opacity: 0.9;
+        padding: 15px;
+        transform: translateX(-1000px);
+        transition: transform 0.5s ease-in-out;
+    }
+    .sidebar .logo-text {
+        font-size: 1.5rem;
+        margin-right: 20px;
+    }
+    .sidebar ul li {
+        font-size: 1.4rem;
+        margin-right: 20px;
+    }
+    .sidebar.show {
+        transform: translateX(-5px);
+    }
+    .main-nav ul {
+        margin-top: 15%;
+    }
+    .main-nav ul li a {
+        padding-bottom: 1px;
+        padding-left: 0px;
+    }
+    .main-nav ul li a span {
+        margin-left: 0px;
+    }
+    .top-content {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .top-content hr {
+        margin-top: 10px;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .top-bar input[type=text] {
+        display: none;
+    }
+    .top-bar img {
+        display: none;
+    }
+    .mid-content {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .box-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .blood-group img,
+    .location img {
+        width: 60.5px;
+        height: 60.5px;
+        position: relative;
+        top: 20px;
+        left: 30%;
+    }
+    .contact-contents {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .contact h2 {
+        margin-left: 20px;
+        font-size: 1.3rem;
+    }
+    .contact-box ul li {
+        padding: 15px;
+        margin-top: 10px;
+        font-size: 1rem;
+    }
+    .check-box-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 2%;
+        width: 90%;
+    }
+    .check-box-area .check-box {
+        font-size: 1rem;
+        padding: 5px 30px 0px 30px;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 1px;
+        text-align: center;
+    }
+    .right-side-content {
+        position: absolute;
+        top: 70px;
+        right: 33.3%;
+    }
+    .bottom-content {
+        margin-left: 0px;
+    }
+    .appointment-box {
+        padding: 6px;
+    }
+    .appointment h2 {
+        font-size: 1.3rem;
+        margin-top: 0px;
+    }
+    .appointment-left {
+        width: 55%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .appointment-left img {
+        width: 38px;
+        height: 40px;
+        position: relative;
+        top: 0px;
+    }
+    .appointment-left h3 {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 12px;
+    }
+    .decline-btn,
+    .approve-btn {
+        padding: 3px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        margin: 8px 0px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 800px) {
+    .boxyy {
+        padding: 30px;
+    }
+    .boxyy ul {
+        display: flex;
+    }
+    .boxyy ul li {
+        list-style: none;
+        width: 250px;
+        height: 105px;
+        background: #FFFFFF;
+        border-radius: 7px;
+        margin-right: 150px;
+        margin-bottom: 50px;
+        border: 1px solid #63BA86;
+        box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    }
+    .bas {
+        flex-basis: 40%;
+    }
+    .iconn {
+        text-align: center;
+        margin-top: 5px;
+    }
+    h1.num {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 39px;
+        /* identical to box height */
+        color: #3D8D5D;
+        text-align: initial;
+        padding-left: 150px;
+    }
+    h1.buto {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        color: #3D8D5D;
+        text-align: initial;
+        padding-left: 20px;
+    }
+    h1.numm {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        color: #3D8D5D;
+        text-align: initial;
+        padding-left: 50px;
+    }
+    .fl {
+        flex-wrap: wrap;
+    }
+    .containerr {
+        width: 350px;
+        border: 1px solid #3D8D5D;
+        border-radius: 5px;
+    }
+    .menu-btn img {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 30px;
+    }
+    .menu-btn img:hover {
+        opacity: 0.5;
+    }
+    .sidebar {
+        position: absolute;
+        top: 68px;
+        left: 5px;
+        text-align: center;
+        width: 100%;
+        height: 80vh;
+        border-right: #ccc 1px solid;
+        opacity: 0.9;
+        padding: 15px;
+        transform: translateX(-1000px);
+        transition: transform 0.5s ease-in-out;
+    }
+    .sidebar .logo-text {
+        font-size: 1.5rem;
+    }
+    .sidebar ul li {
+        font-size: 1.4rem;
+    }
+    .sidebar.show {
+        transform: translateX(-5px);
+    }
+    .top-content {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .top-bar input[type=text] {
+        padding: 3px;
+        margin-top: 38px;
+        margin-right: 70px;
+        border: none;
+        font-size: 1rem;
+        border: 1px solid #63BA86;
+        border-radius: 11px;
+    }
+    .top-bar img {
+        display: none;
+    }
+    .mid-content {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .box-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .blood-group img,
+    .location img {
+        width: 60.5px;
+        height: 60.5px;
+        position: relative;
+        top: 20px;
+        left: 50%;
+    }
+    .contact-contents {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .contact h2 {
+        margin-left: 30px;
+    }
+    .check-box-area {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2%;
+        width: 90%;
+    }
+    .check-box-area .check-box {
+        font-size: 1rem;
+        padding: 5px 30px 0px 30px;
+        width: 32%;
+        margin-bottom: 10px;
+    }
+    .check-box-area .check-box:first-child {
+        margin-left: 1px;
+    }
+    .right-side-content {
+        position: absolute;
+        top: 70px;
+        right: 40%;
+    }
+    .bottom-content {
+        margin-left: 0px;
+    }
+    .appointment-box {
+        padding: 6px;
+    }
+    .appointment-left {
+        width: 55%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .appointment-left img {
+        width: 38px;
+        height: 40px;
+        position: relative;
+        top: 0px;
+    }
+    .appointment-left h3 {
+        font-size: 1rem;
+        font-weight: 400;
+        margin-top: 12px;
+    }
+    .decline-btn,
+    .approve-btn {
+        padding: 3px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        margin: 8px 0px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 801px) and (max-width: 1440px) {
+    .boxyy ul {
+        display: flex;
+    }
+    .blood-group,
+    .location {
+        width: 85%;
+    }
+    .blood-group h3,
+    .location h3 {
+        font-size: 20px;
+    }
+    .blood-group img,
+    .location img {
+        position: relative;
+        top: 20px;
+        left: 0px;
+    }
+    .right-side-content img {
+        width: 7.75rem;
+        height: 8.0625rem;
+        margin-top: 28px;
+        margin-right: -36px;
+    }
+}

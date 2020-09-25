@@ -1,0 +1,182 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navana</title>
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive2.css">
+
+</head>
+
+<body>
+    <div class="menu-btn">
+        <img src="images/menu-bar.png" alt="">
+    </div>
+
+    <div class="sidebar">
+        <div class="container">
+            <!-- Navigation -->
+            <div class="main-nav">
+                <a href="" class="logo"><span><img src="images/logo.svg" alt=""></span><span
+                        class="logo-text">Navara</span></a>
+                <ul class="main-menu">
+                    <li>
+                        <a href="#"><img class="nav-items" src="images/home.svg" alt=""><span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="nav-items" src="images/male.svg" alt=""><span>Patients</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="nav-items" src="images/doctor.svg" alt=""><span>Doctors</span> </a>
+                    </li>
+                    <li>
+                        <a href="#"><img class="nav-items" src="images/lab.svg" alt=""><span>Lab Tests</span> </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="top-content">
+        <div class="container">
+            <header class="top-bar">
+                <h1>Profile</h1>
+                <div>
+                    <input type="text" placeholder="">
+                    <img src="images/girl.png" alt="">
+                </div>
+            </header>
+        </div>
+        <hr style="color: #dee1e1;border-top: 0px solid #151717;">
+    </div>
+    <div class="content">
+        <div class="mid-content">
+            <div class="container">
+                <section class="box-content">
+                    <div class="blood-group">
+                        <div>
+                            <h2>Blood Group</h2>
+                            <h3>O+ positive</h3>
+                        </div>
+                        <div class="box-image">
+                            <img src="images/drop.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="location">
+                        <div>
+                            <h2>Last Visit</h2>
+                            <h3>O+ positive</h3>
+                        </div>
+                        <div>
+                            <img src="images/location.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="blood-group">
+                        <div>
+                            <h2>Blood Group</h2>
+                            <h3>O+ positive</h3>
+                        </div>
+                        <div>
+                            <img src="images/drop.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="blood-group">
+                        <div>
+                            <h2>Blood Group</h2>
+                            <h3>O+ positive</h3>
+                        </div>
+                        <div>
+                            <img src="images/drop.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="location">
+                        <div>
+                            <h2>Last Visit</h2>
+                            <h3>O+ positive</h3>
+                        </div>
+                        <div>
+                            <img src="images/location.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="blood-group">
+                        <div>
+                            <h2>Blood Group</h2>
+                            <h3>O+ positive</h3>
+                        </div>
+                        <div>
+                            <img src="images/drop.svg" alt="">
+                        </div>
+                    </div>
+                </section>
+                <section class="contact">
+                    <h2>Contact information</h2>
+                    <div class="contact-contents">
+                        <div class="contact-box">
+                            <ul class="left-menu">
+                                <li>Full name</li>
+                                <li>Address</li>
+                                <li>Date of Birth</li>
+                                <li>Next of Kin</li>
+                                <li>State</li>
+                                <li>Phone number</li>
+                            </ul>
+                            <ul class="right-menu">
+                                <li>Jonathan Chrysler</li>
+                                <li>25th Cahton Avenue</li>
+                                <li>12/10/1979</li>
+                                <li>Janet Chrysler</li>
+                                <li>Calabar</li>
+                                <li>08097777777</li>
+                            </ul>
+                        </div>
+                        <div class="check-box-area">
+                            <button class="check-box">
+                                Check Prescriptions
+                            </button>
+                            <button class="check-box">
+                                Check Lab tests
+                            </button>
+                            <button class="check-box">
+                                Check Prescriptions
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="right-side-content">
+            <div>
+                <img src="images/girl.png" alt="">
+            </div>
+        </div>
+    </div>
+    <footer class="bottom-content">
+        <div class="appointment">
+            <div class="container">
+                <h2>Pending appointments</h2>
+                <div class="appointment-box">
+                    <div class="appointment-left">
+                        <img src="images/leaf.svg" alt="">
+                        <h3>Irua clinic</h3>
+                        <h3>12/10/2020</h3>
+                    </div>
+                    <div class="appointment-right">
+                        <button class="decline-btn">Decline</button>
+                        <button class="approve-btn">Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        document.querySelector('.menu-btn').addEventListener('click', () => document.querySelector('.sidebar').classList.toggle('show'));
+    </script>
+</body>
+
+</html>
