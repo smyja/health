@@ -25,6 +25,9 @@ def profile(request, slug, pk):
     return render(request, 'dashboard/profile.html', context)
 
 
+
+
+
 def bookapp(request, operation, pk):
      hospital = Profile.objects.get(pk=pk)
      

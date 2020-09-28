@@ -52,7 +52,7 @@ def login_user(request):
 
 
 def addpatient(request):
-    form = PatientForm(request.POST)
+    form = PatientForm(request.POST or None)
     if form.is_valid():
         user = form.save()
         user.refresh_from_db()
@@ -76,8 +76,7 @@ def addpatient(request):
         print(username, password, user)
         login(request, user)
         return redirect(f'/dashboard/profile/{user.profile.slug}/{user.pk}')
-    else:
-        form = PatientForm()
+  
     return render(request, 'core/addpatient.html', {'form': form})
 
 
@@ -123,6 +122,8 @@ def signup_view(request):
     return render(request, 'core/signup.html', {'form': form})
 
 
+def editprofile(request):
+    return render(request, 'core/editprofile.html', context)
 
 
 def about(request):
