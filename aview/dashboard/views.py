@@ -1,11 +1,11 @@
 from django.dispatch import receiver, Signal
 from django.db.models.signals import post_save
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from aview.core.models import Profile, Appointment
-from django.views.generic import ListView
+from aview.core.forms import EditProfileForm
 from aview.core.signals import *
 # Create your views here.
 @login_required(login_url='/login/')
@@ -65,6 +65,25 @@ def bookin(request):
         return render(request, 'core/booked.html', context)
 
 
+def edit_profile(request,id):
+    profile = Profile.objects.get(user_id=id)
+    user = get_object_or_404(Profile, pk=id, user=profile.user.id)
+    if request.method == 'POST':
+       
+        form = EditProfileForm(request.POST, instance=profile)
+
+        if form.is_valid():
+            form.save()
+            return redirect(f'/dashboard/profile/{profile.slug}/{profile.user.pk}')
+        else:
+            print(form.errors)
+            return HttpResponse('Could not save')
+
+    else:
+       
+        form = EditProfileForm(instance=profile)
+        args = {'form': form,'id':id}
+        return render(request, 'core/editprofile.html', args)
 
 # book = Signal(providing_args=['booking'])
 

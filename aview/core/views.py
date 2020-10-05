@@ -122,8 +122,7 @@ def signup_view(request):
     return render(request, 'core/signup.html', {'form': form})
 
 
-def editprofile(request):
-    return render(request, 'core/editprofile.html', context)
+
 
 
 def about(request):

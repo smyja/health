@@ -5,12 +5,13 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 from django.utils.text import slugify
+from django.contrib.auth.models import AbstractBaseUser
 
 get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
 
 
 # superusers = User.objects.filter(is_superuser=True)
-class Profile(models.Model):
+class Profile(AbstractBaseUser):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     last_name = models.CharField(max_length=100, blank=True)
     first_name = models.CharField(max_length=100, blank=True)
@@ -19,13 +20,17 @@ class Profile(models.Model):
     next_of_kin = models.CharField(max_length=100, blank=True)
     dob = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=100, blank=True)
+    password = models.CharField(max_length=100, blank=True)
     email = models.EmailField(max_length=150)
+    
     signup_confirmation = models.BooleanField(default=False)
     address = models.CharField(max_length=255, null=True)
     country = models.CharField(max_length=255, null=True)
     phonenumber = models.CharField(max_length=20, null=True)
     appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
-    slug = models.SlugField(max_length=200,null=True)
+    slug = models.SlugField(max_length=200, null=True)
+    
+    USERNAME_FIELD ='user'
 
     def save(self, *args, **kw):
         self.full_name = '{0} {1}'.format(self.first_name, self.last_name)

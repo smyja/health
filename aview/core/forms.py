@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -131,14 +132,16 @@ class EditProfileForm(UserCreationForm):
     next_of_kin = forms.CharField(max_length=100, help_text='Next of kin')
     dob = forms.CharField(max_length=100, help_text='Date of birth')
     state = forms.CharField(max_length=100, help_text='State')
+    password1 = forms.CharField(required=False, max_length=100, help_text='State')
+    password2 = forms.CharField(
+        required=False, max_length=100, help_text='State')
     phonenumber = forms.CharField(
         max_length=100, help_text='Enter Phone number')
     email = forms.EmailField(max_length=150, help_text='Email')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update(
-            {'placeholder': ('Username')})
+       
         self.fields['email'].widget.attrs.update(
             {'placeholder': ('Email')})
         self.fields['address'].widget.attrs.update(
@@ -150,10 +153,7 @@ class EditProfileForm(UserCreationForm):
         self.fields['last_name'].widget.attrs.update(
             {'placeholder': ('Last name')})
 
-        self.fields['password1'].widget.attrs.update(
-            {'placeholder': ('Password')})
-        self.fields['password2'].widget.attrs.update(
-            {'placeholder': ('Repeat password')})
+       
         self.fields['dob'].widget.attrs.update(
             {'placeholder': ('Date of birth')})
         self.fields['state'].widget.attrs.update({'placeholder': ('State')})
@@ -167,11 +167,17 @@ class EditProfileForm(UserCreationForm):
         self.fields['dob'].widget.attrs.update({'class': 'log'})
         self.fields['state'].widget.attrs.update({'class': 'log'})
         self.fields['next_of_kin'].widget.attrs.update({'class': 'log'})
-        self.fields['username'].widget.attrs.update({'class': 'log'})
-        self.fields['password1'].widget.attrs.update({'class': 'log swiy'})
-        self.fields['password2'].widget.attrs.update({'class': 'log swiy'})
-
+        
     class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'phonenumber',
-                  'email', 'password1', 'password2', 'address', 'dob', 'state', 'next_of_kin')
+        model = Profile
+        fields = ('first_name', 'last_name', 'phonenumber',
+                  'email', 'address', 'dob', 'state', 'next_of_kin')
+
+    def save(self, commit=True):
+        user = super(EditProfileForm, self).save(commit=False)
+        password = self.cleaned_data["password1"]
+        if password:
+            user.set_password(password)
+        if commit:
+            user.save()
+        return user
