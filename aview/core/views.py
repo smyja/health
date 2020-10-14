@@ -65,8 +65,10 @@ def addpatient(request):
         user.profile.address = form.cleaned_data.get('address')
         user.profile.phonenumber = form.cleaned_data.get('phonenumber')
         user.is_active = True
-
+        user.profile.appointment_with.add(request.user)
+        request.user.appointment_with.add(user)
         user.save()
+
 
 
         username = form.cleaned_data.get('username')
@@ -141,7 +143,7 @@ def privacy(request):
 def hospital(request):
     appointments = Appointment.objects.filter(hospital=request.user.profile).exclude(status='approved')
     appointment_number = Appointment.objects.filter(
-        hospital=request.user.profile).exclude(status='approved').count()
+        hospital=request.user.profile).exclude(status='book').count()
     
     context = {
         'appointments': appointments,
@@ -149,6 +151,19 @@ def hospital(request):
         
     }
     return render(request, 'core/hospital.html', context)
+
+def patients(request):
+    appointments = Appointment.objects.filter(
+        hospital=request.user.profile).exclude(status='book')
+    appointment_number = Appointment.objects.filter(
+        hospital=request.user.profile).exclude(status='book').count()
+
+    context = {
+        'appointments': appointments,
+        'appointment_number': appointment_number,
+
+    }
+    return render(request, 'core/patient.html', context)
 
 
 def activation_sent_view(request):

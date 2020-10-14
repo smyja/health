@@ -82,28 +82,19 @@
         });
 
         window.addEventListener('popstate', function(e) {
-            console.log(e.state.page)
-            if (e.state.page == 'terms') {
-                $('#ajaxContent').load("terms #ajaxContent");
-                $("#head_name").html("Terms")
-            }
-            if (e.state.page == 'privacy') {
-                $('#ajaxContent').load('privacy #ajaxContent');
-                $("#head_name").html("Privacy")
-            }
-            if (e.state.page == 'about') {
-                $('#ajaxContent').load('about #ajaxContent');
-                $("#head_name").html("About")
-            }
-            if (e.state.page === null) {
-                $('#ajaxContent').load('../forgot_password #ajaxContent')
-                $("#head_name").html("Forgot Password")
-            }
-        });
-
-        history.replaceState({
-            page: null
-        }, '', './');
+                    console.log(e.state.page)
+                    if (e.state.page == 'terms') {
+                        $('#ajaxContent').load("terms #ajaxContent");
+                        $("#head_name").html("Terms")
+                    }
+                    if (e.state.page == 'privacy') {
+                        $('#ajaxContent').load('privacy #ajaxContent');
+                        $("#head_name").html("Privacy")
+                    }
+                    if (e.state.page == 'about') {
+                        $('#ajaxContent').load('about #ajaxContent');
+                        $("#head_name").html("About")
+                    }
     </script>
 
 </body>

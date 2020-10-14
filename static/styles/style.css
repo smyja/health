@@ -118,7 +118,7 @@ ul {
 }
 
 .main-nav ul li {
-    padding: 5px 0;
+    padding: 10px 0;
 }
 
 .main-nav ul li a {
@@ -143,6 +143,21 @@ ul {
     top: 6px;
     margin-right: 3px;
     fill: #fff;
+}
+
+.foocus a {
+    background: #8BC2A1;
+    border-radius: 7.5px;
+    width: 168px;
+    height: 38px;
+    display: block;
+    font-weight: 700 !important;
+    margin-top: 10px;
+}
+
+link {
+    margin: 10px;
+    font-size: large;
 }
 
 
