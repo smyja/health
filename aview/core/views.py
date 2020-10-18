@@ -65,9 +65,10 @@ def addpatient(request):
         user.profile.address = form.cleaned_data.get('address')
         user.profile.phonenumber = form.cleaned_data.get('phonenumber')
         user.is_active = True
-        user.profile.appointment_with.add(request.user)
-        request.user.appointment_with.add(user)
+       
         user.save()
+        addapp = Appointment(hospital=request.user.profile,patient=user.profile, status='approved')
+        addapp.save()
 
 
 
