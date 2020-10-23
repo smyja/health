@@ -66,6 +66,16 @@ class Appointment(models.Model):
     def __str__(self):
         return f"{self.patient}-{self.hospital}-{self.status}"
 
+class Note(models.Model):
+    illness = models.CharField(max_length=1000, blank=True)
+    patient = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='patientnote', null=True)
+    Doctor = models.CharField(max_length=100, blank=True)
+    Description = models.CharField(max_length=10000, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return f"{self.illness}"
 
    
 

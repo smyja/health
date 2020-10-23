@@ -84,7 +84,7 @@
                                     48 41.6 47C39.7 45.1 37.9 43.2001 36 41.3C37.1 40.4 38.2 39.5 39.3 38.7001C40 38.2001 40.7 37.7 41.4 37.1C44.8 36.9 48.1 36.7001 51.5 36.4001C53.3 36.2001 55 36.1 56.8 35.8C58.6 35.6 60.3 35.4 62 34.8C60.3 35.2 58.5 35.4 56.8 35.5Z "
                                             fill="#C65C3C " />
                                         </svg>
-                                        <h1 class="buto "><a href="{% url 'profilepk' slug=appointment.patient.slug pk=appointment.patient.pk %}" style="color: #63BA86; ">{{appointment.patient.first_name}} {{appointment.patient.last_name}}</a></h1>
+                                        <h1 class="buto "><a href="{% url 'profilepk' slug=appointment.patient.slug pk=appointment.patient.pk %}" style="color: #63BA86; ">{{appointment.patient.first_name}} {{appointment.patient.last_name}} {{appointment.created}}</a></h1>
                                         <h1 class="lau ">10PM - 5PM</h1>
 
                                         <form action="{% url 'bookin' %}" method="post">

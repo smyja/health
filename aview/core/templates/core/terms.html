@@ -30,9 +30,13 @@
     </header>
     <div class="line "></div>
     <div id="ajaxContent">
-
-        <h2>This is Terms page.</h2>
-
+        {%load static%}
+        <h2>This is Terms page.</h2>{% static 'styles/main.css'%}
+        <form method="POST">
+            {%csrf_token%}
+            <h1 class="cer">{% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}</h1>
     </div>
 
     <footer class="cl ">
