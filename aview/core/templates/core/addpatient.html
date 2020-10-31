@@ -26,14 +26,13 @@
     </header>
     <div class="line"></div>
     <h1 class="bigi">Add Patient</h1>
-    <form method="post">
-        {%csrf_token%}
-        <form method="post">{%csrf_token%} {{form.username}} {{form.first_name}} {{form.last_name}} {{form.email}} {{form.phonenumber}} {{form.state}} {{form.next_of_kin}} {{form.dob}} {{form.address}} {{form.password1}} {{form.password2}}
-            <li class="btnn"><button type="submit" class="conf">Add</button></li>
-        </form>
-        <h1 class="cer">{{ form.errors.password1 }}{{form.errors.username}}{{form.errors.first_name}} {{form.errors.last_name}} {{form.errors.email}} {{form.errors.phonenumber}} {{form.errors.address}} {{form.errors.password2}}
-        </h1>
-        <svg width="88" height="156" viewbox="0 0 88 156" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 180px" ;>
+
+    <form method="post">{%csrf_token%} {{form.username}} {{form.first_name}} {{form.last_name}} {{form.middle_name}} {{form.email}} {{form.phonenumber}} {{form.state}} {{form.next_of_kin}} {{form.dob}} {{form.address}} {{form.password1}} {{form.password2}}
+        <li class="btnn"><button type="submit" class="conf">Add</button></li>
+    </form>
+    <h1 class="cer">{{ form.errors.password1 }}{{form.errors.username}}{{form.errors.first_name}} {{form.errors.last_name}} {{form.errors.email}} {{form.errors.phonenumber}} {{form.errors.address}} {{form.errors.password2}}
+    </h1>
+    <svg width="88" height="156" viewbox="0 0 88 156" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: 180px" ;>
         <path d=" M39.9181 37.8197C40.0179 38.3354 40.4899 38.5992 40.7158 39.0517C41.0814 39.3322 41.1371 39.7587 41.7298 39.9075C42.0557 39.9893 42.3825 40.0968 42.6638 40.2415C42.8654 40.3452 43.1312 40.2664 43.3416 40.3273C43.5549 40.3891 43.4375 40.6288
         43.6061 40.7129C43.9796 40.8991 44.3533 41.3462 44.6594 41.6206C44.9975 41.9236 45.3227 42.0865 45.5275 42.5018C45.7808 43.0154 46.2825 43.4801 46.6903 43.8987C46.9874 44.2037 47.4296 44.3559 47.7288 44.6127C47.8368 44.7054 48.0098 45.0098 48.2516
         44.8022C49.4421 43.7806 50.4607 42.5773 51.7005 41.6038C52.1113 41.2813 52.3859 40.7728 52.5122 40.3495C52.6693 39.823 52.9403 39.2949 53.1416 38.7642C53.5907 37.58 54.0728 36.4019 54.5242 35.2199C54.8472 34.3742 55.1878 33.257 55.76 32.4421C56.0927
@@ -165,16 +164,16 @@
             fill="#97C2AD" stroke="#63BA86" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 
-        <footer class="cl ">
-            <div class="liner "></div>
-            <ul>
-                <li>
-                    <a href="# " class="link ">Terms</a>
-                    <a href="# ">Privacy</a>
-                    <a href="# ">About</a>
-                </li>
-            </ul>
-        </footer>
+    <footer class="cl ">
+        <div class="liner "></div>
+        <ul>
+            <li>
+                <a href="# " class="link ">Terms</a>
+                <a href="# ">Privacy</a>
+                <a href="# ">About</a>
+            </li>
+        </ul>
+    </footer>
 </body>
 
 <script src="https://code.iconify.design/1/1.0.6/iconify.min.js "></script>

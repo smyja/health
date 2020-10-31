@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from .views import dashboard, profile, bookapp, acceptapp, edit_profile
+from .views import dashboard, profile, bookapp, acceptapp, edit_profile,addnotes
 
 
 
@@ -8,6 +8,7 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('profile/<str:slug>/<int:pk>', profile, name='profilepk'),
     path('edit_profile/<int:id>/', edit_profile, name='editprofile'),
+    path('addnotes/<int:id>', addnotes, name='addnote'),
     re_path(r'^connect/(?P<operation>.+)/(?P<pk>\d+)/$',
         bookapp, name='bookapp'),
 ]

@@ -29,6 +29,7 @@ urlpatterns = [
     path('dashboard/', include('aview.dashboard.urls')),
     path('approve/', acceptapp, name = 'approve'),
     path('addpatient/', addpatient, name = 'addpatient'),
+    
     path('patient/', patients, name='patients'),
     path('book/', bookin, name='bookin'),
     path('signup/', signup_view, name="signup"),

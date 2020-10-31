@@ -15,8 +15,9 @@ class Profile(AbstractBaseUser):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     last_name = models.CharField(max_length=100, blank=True)
     first_name = models.CharField(max_length=100, blank=True)
+    middle_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
-    full_name = models.CharField(max_length=128, blank=True)
+   
     next_of_kin = models.CharField(max_length=100, blank=True)
     dob = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=100, blank=True)
@@ -33,18 +34,24 @@ class Profile(AbstractBaseUser):
     USERNAME_FIELD ='user'
 
     def save(self, *args, **kw):
-        self.full_name = '{0} {1}'.format(self.first_name, self.last_name)
+
+        self.slug = slugify(f"{self.last_name}-{self.first_name}")
         super(Profile, self).save(*args, **kw)
     
-    def save(self, *args, **kwargs):
-        self.slug = slugify(f"{self.last_name}-{self.first_name}")
-        super(Profile, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.user.username
     
     def get_hospitals(self):
         return self.hospitals.all()
+   
+    @property
+    def get_fullname(self):
+        """
+        Returns the first_name plus the last_name, with a space in between.
+        """
+        full_name = '%s %s %s' % (self.first_name, self.last_name, self.middle_name)
+        return full_name.strip()
 
 
 

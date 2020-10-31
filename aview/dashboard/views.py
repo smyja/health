@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from aview.core.models import Profile, Appointment
-from aview.core.forms import EditProfileForm
+from aview.core.forms import EditProfileForm, PatientNotesForm
 from aview.core.signals import *
 # Create your views here.
 @login_required(login_url='/login/')
@@ -84,6 +84,18 @@ def edit_profile(request,id):
         form = EditProfileForm(instance=profile)
         args = {'form': form,'id':id}
         return render(request, 'core/editprofile.html', args)
+
+
+def addnotes(request, id):
+    profile = Profile.objects.get(user_id=id)
+    if request.method == 'POST':
+        form = PatientNotesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/dashboard/profile/{user.profile.slug}/{user.pk}')
+    else:
+        form = PatientNotesForm(initial={'patient': profile.get_fullname})
+    return render(request, 'core/addnotes.html', {'form': form})
 
 # book = Signal(providing_args=['booking'])
 

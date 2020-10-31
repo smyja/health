@@ -34,7 +34,7 @@
                         <a href="#"><img class="nav-items" src="{% static 'images/male.svg'%}" alt=""><span>Patients</span></a>
                     </li>
                     <li>
-                        <a href="#"><img class="nav-items" src="{% static 'images/doctor.svg'%}" alt=""><span>Doctors</span> </a>
+                        <a href="{% url 'addnote' profile.user.pk %}"><img class="nav-items" src="{% static 'images/doctor.svg'%}" alt=""><span>Doctors</span> </a>
                     </li>
                     <li>
                         <a href="{% url 'editprofile' profile.user.id %}"><img class="nav-items" src="{% static 'images/lab.svg'%}" alt=""><span>Edit profile</span>
@@ -132,7 +132,7 @@
                                 <li>Phone number</li>
                             </ul>
                             <ul class="right-menu">
-                                <li>{{profile.first_name}}{{profile.last_name}}</li>
+                                <li>{{profile.get_fullname}}</li>
                                 <li>{{profile.address}}</li>
                                 <li>12/10/1979</li>
                                 <li>Janet Chrysler</li>

@@ -1,7 +1,8 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile,Note
 
 
 class SignUpForm(UserCreationForm):
@@ -52,6 +53,7 @@ class SignUpForm(UserCreationForm):
 class PatientForm(UserCreationForm):
     first_name = forms.CharField(max_length=100, help_text='First Name')
     last_name = forms.CharField(max_length=100, help_text='Last Name')
+    middle_name = forms.CharField(max_length=100, help_text='Middle Name')
     address = forms.CharField(max_length=100, help_text='address')
     next_of_kin = forms.CharField(max_length=100, help_text='Next of kin')
     dob = forms.CharField(max_length=100, help_text='Date of birth')
@@ -76,6 +78,8 @@ class PatientForm(UserCreationForm):
             {'placeholder': ('First name')})
         self.fields['last_name'].widget.attrs.update(
             {'placeholder': ('Last name')})
+        self.fields['middle_name'].widget.attrs.update(
+            {'placeholder': ('Middle name')})
         
         
 
@@ -86,6 +90,7 @@ class PatientForm(UserCreationForm):
         self.fields['next_of_kin'].widget.attrs.update({'placeholder': ('Next of kin')})
         self.fields['first_name'].widget.attrs.update({'class': 'log'})
         self.fields['last_name'].widget.attrs.update({'class': 'log'})
+        self.fields['middle_name'].widget.attrs.update({'class': 'log'})
         self.fields['email'].widget.attrs.update({'class': 'log'})
         self.fields['phonenumber'].widget.attrs.update({'class': 'log'})
         self.fields['address'].widget.attrs.update({'class': 'log'})
@@ -98,7 +103,7 @@ class PatientForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'phonenumber',
+        fields = ('username', 'first_name', 'last_name', 'middle_name','phonenumber',
                   'email', 'password1', 'password2', 'address','dob','state','next_of_kin')
     def clean(self):
         cleaned_data = super(PatientForm, self).clean()
@@ -124,6 +129,34 @@ class PatientForm(UserCreationForm):
             raise forms.ValidationError('This username has already been taken!')
         return username  
  
+
+class PatientNotesForm(ModelForm):
+    illness = forms.CharField(max_length=100, help_text='First Name')
+    patient = forms.CharField(max_length=100, help_text='Last Name')
+    doctor = forms.CharField(max_length=100, help_text='address')
+    description =  forms.CharField(max_length=100,widget=forms.Textarea)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['patient'].disabled = True
+        self.fields['illness'].widget.attrs.update(
+            {'placeholder': ('illness')})
+        self.fields['doctor'].widget.attrs.update(
+            {'placeholder': ("Doctor's name")})
+        self.fields['patient'].widget.attrs.update(
+            {'placeholder': ("Patient's name")})
+        self.fields['description'].widget.attrs.update(
+            {'placeholder': ("Description")})
+        self.fields['illness'].widget.attrs.update({'class': 'log'})
+        self.fields['doctor'].widget.attrs.update({'class': 'log'})
+        self.fields['patient'].widget.attrs.update({'class': 'log'})
+        self.fields['description'].widget.attrs.update({'class': 'textarea'})
+
+    class Meta:
+        model = Note
+        fields = ('illness', 'patient', 'doctor', 'description')
+    
+
 
 class EditProfileForm(UserCreationForm):
     first_name = forms.CharField(max_length=100, help_text='First Name')
