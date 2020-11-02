@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from aview.core.models import Profile, Appointment
+from aview.core.models import Profile, Appointment,Note
 from aview.core.forms import EditProfileForm, PatientNotesForm
 from aview.core.signals import *
 # Create your views here.
@@ -65,7 +65,7 @@ def bookin(request):
         return render(request, 'core/booked.html', context)
 
 
-def edit_profile(request,id):
+def edit_profile(request,slug,id):
     profile = Profile.objects.get(user_id=id)
     user = get_object_or_404(Profile, pk=id, user=profile.user.id)
     if request.method == 'POST':
@@ -82,19 +82,21 @@ def edit_profile(request,id):
     else:
        
         form = EditProfileForm(instance=profile)
-        args = {'form': form,'id':id}
+        args = {'form': form,'id':id,'slug':slug}
         return render(request, 'core/editprofile.html', args)
 
 
-def addnotes(request, id):
+def addnotes(request, slug,id):
     profile = Profile.objects.get(user_id=id)
     if request.method == 'POST':
         form = PatientNotesForm(request.POST)
         if form.is_valid():
+            print(form.cleaned_data['illness'],form.cleaned_data['patient'])
             form.save()
-            return redirect(f'/dashboard/profile/{user.profile.slug}/{user.pk}')
+            return redirect(f'/dashboard')
     else:
-        form = PatientNotesForm(initial={'patient': profile.get_fullname})
+        form = PatientNotesForm(initial={'patient': profile,'patientfullname':profile.get_fullname})
+        
     return render(request, 'core/addnotes.html', {'form': form})
 
 # book = Signal(providing_args=['booking'])

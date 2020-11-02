@@ -44,7 +44,7 @@
     <h1 class="bigi">Add a patient note</h1>
     <div class="bux">
 
-        <form method="post" class="fum"> {%csrf_token%}{{form.illness}}{{form.patient}}{{form.doctor}}{{form.description}}
+        <form method="post" class="fum"> {%csrf_token%}{{form.illness}}{{form.patient.as_hidden}}{{form.patientfullname}}{{form.doctor}}{{form.description}}
             <li class="btnn "><button type="submit " class="conf ">Confirm</button></li>
         </form>
     </div>

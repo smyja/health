@@ -27,7 +27,7 @@
     <div class="line"></div>
     <h1 class="bigi">Edit profile</h1>
 
-    <form method="post" action="{% url 'editprofile' id%}">{% csrf_token %} {{form.first_name}} {{form.last_name}} {{form.email}} {{form.phonenumber}} {{form.state}} {{form.next_of_kin}} {{form.dob}} {{form.address}} {{form.errors.password1}} {{form.errors.password2}}
+    <form method="post" action="{% url 'editprofile' slug id%}">{% csrf_token %} {{form.first_name}} {{form.last_name}} {{form.email}} {{form.phonenumber}} {{form.state}} {{form.next_of_kin}} {{form.dob}} {{form.address}} {{form.errors.password1}} {{form.errors.password2}}
         <li class="btnn"><button type="submit" class="conf">Add</button></li>
     </form>
 

@@ -103,6 +103,7 @@ class PatientForm(UserCreationForm):
 
     class Meta:
         model = User
+       
         fields = ('username', 'first_name', 'last_name', 'middle_name','phonenumber',
                   'email', 'password1', 'password2', 'address','dob','state','next_of_kin')
     def clean(self):
@@ -132,29 +133,34 @@ class PatientForm(UserCreationForm):
 
 class PatientNotesForm(ModelForm):
     illness = forms.CharField(max_length=100, help_text='First Name')
-    patient = forms.CharField(max_length=100, help_text='Last Name')
+    patient = forms.ModelChoiceField(queryset=Profile.objects.all())
+    patientfullname = forms.CharField(max_length=1000, help_text='First Name')
     doctor = forms.CharField(max_length=100, help_text='address')
-    description =  forms.CharField(max_length=100,widget=forms.Textarea)
+    description =  forms.CharField(max_length=10000,widget=forms.Textarea)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['patient'].disabled = True
+    
         self.fields['illness'].widget.attrs.update(
             {'placeholder': ('illness')})
         self.fields['doctor'].widget.attrs.update(
             {'placeholder': ("Doctor's name")})
         self.fields['patient'].widget.attrs.update(
             {'placeholder': ("Patient's name")})
+        self.fields['patientfullname'].widget.attrs.update(
+            {'placeholder': ("Patient's name")})
         self.fields['description'].widget.attrs.update(
             {'placeholder': ("Description")})
         self.fields['illness'].widget.attrs.update({'class': 'log'})
         self.fields['doctor'].widget.attrs.update({'class': 'log'})
+        self.fields['patientfullname'].widget.attrs.update({'class': 'log','readonly':True})
         self.fields['patient'].widget.attrs.update({'class': 'log'})
         self.fields['description'].widget.attrs.update({'class': 'textarea'})
 
     class Meta:
         model = Note
-        fields = ('illness', 'patient', 'doctor', 'description')
+        
+        fields = ('illness', 'patient','patientfullname', 'doctor', 'description')
     
 
 
