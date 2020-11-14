@@ -24,7 +24,12 @@ def homepage(request):
 
 def login_user(request):
     if request.method == 'POST':
-        username = request.POST.get('Username')
+        usernayme = request.POST.get('Username')
+        password = request.POST.get('Password')
+        try:
+            username = Profile.objects.get(email=usernayme).user
+        except Profile.DoesNotExist:
+            username = request.POST.get('Username')
         password = request.POST.get('Password')
         user = authenticate(username=username, password=password)
         print(username,password,user)
