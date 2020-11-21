@@ -99,6 +99,21 @@ def addnotes(request, slug,id):
         
     return render(request, 'core/addnotes.html', {'form': form})
 
+def notes(request, slug,id):
+    profile = Profile.objects.get(user_id=id)
+    patientnotes = Note.objects.filter(patient=profile).order_by('-created')
+    context = {'patientnotes': patientnotes, 'profile': profile}
+    return render(request, 'core/notes.html', context)
+
+
+def viewnotes(request, slug,id,pk):
+    profile = Profile.objects.get(user_id=id)
+    readnotes = Note.objects.get(id=pk)
+    patientnotes = Note.objects.filter(patient=profile).order_by('-created')
+    context = {'patientnotes': patientnotes,
+               'profile': profile, 'readnotes': readnotes, }
+    return render(request, 'core/readnotes.html', context)
+
 # book = Signal(providing_args=['booking'])
 
 # def addfriend(request):
