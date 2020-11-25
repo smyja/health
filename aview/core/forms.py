@@ -18,31 +18,25 @@ class SignUpForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update(
-        {'placeholder': ('Username')})
+            {'placeholder': ('Username')})
         self.fields['email'].widget.attrs.update(
-        {'placeholder': ('Email')})
+            {'placeholder': ('Email'), 'class': 'log'})
         self.fields['address'].widget.attrs.update(
-            {'placeholder': ('Address')})
+            {'placeholder': ('Address'), 'class': 'log'})
         self.fields['phonenumber'].widget.attrs.update(
-            {'placeholder': ('Phone number')})
+            {'placeholder': ('Phone number'), 'class': 'log'})
         self.fields['first_name'].widget.attrs.update(
-            {'placeholder': ('First name')})
+            {'placeholder': ('First name'), 'class': 'log'})
         self.fields['last_name'].widget.attrs.update(
-            {'placeholder': ('Last name')})
+            {'placeholder': ('Last name'), 'class': 'log'})
 
+        self.fields['password1'].widget.attrs.update(
+            {'placeholder': ('Password'), 'class': 'log swiy'})
+        self.fields['password2'].widget.attrs.update(
+            {'placeholder': ('Repeat password'), 'class': 'log swiy'}) 
 
-
-
-        self.fields['password1'].widget.attrs.update({'placeholder': ('Password')})
-        self.fields['password2'].widget.attrs.update({'placeholder': ('Repeat password')})
-        self.fields['first_name'].widget.attrs.update({'class': 'log'})
-        self.fields['last_name'].widget.attrs.update({'class': 'log'})
-        self.fields['email'].widget.attrs.update({'class': 'log'})
-        self.fields['phonenumber'].widget.attrs.update({'class': 'log'})
-        self.fields['address'].widget.attrs.update({'class': 'log'})
-        self.fields['username'].widget.attrs.update({'class': 'log'})
-        self.fields['password1'].widget.attrs.update({'class': 'log swiy'})
-        self.fields['password2'].widget.attrs.update({'class': 'log swiy'})
+      
+     
 
     class Meta:
         model = User
