@@ -1,0 +1,1 @@
+from vuewe.wsgi import application

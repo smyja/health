@@ -95,10 +95,14 @@ DATABASES = {
         #  'TEST': {
         #     'ENGINE': 'django.db.backends.sqlite3',
         #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
-            'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
-        #   'ENGINE': 'django.db.backends.postgresql', 'NAME': 'Navaradb', 'USER': 'navara',
-        # 'PASSWORD': 'Akpobi101', 'HOST': 'database-1.cfwr1aitwzcr.us-east-1.rds.amazonaws.com', 'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
+        #     'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
+         'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'navararl_navarardb',
+            'USER': 'navararl_navarar',
+            'PASSWORD': 'Akpobi101$$',
+            'HOST': '127.0.0.1',
+            'PORT': '3306',
 
         
     
@@ -149,14 +153,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     ]
-
+STATIC_ROOT = os.path.join('/home/navararl/public_html/static')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'cp163176.hpdns.net'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL= 'Navara <safiawatson2@gmail.com>'
+DEFAULT_FROM_EMAIL= 'Navara <noreply@navarar.live>'
 
 SIMPLE_MAIL_USE_CKEDITOR = True
 SIMPLE_MAIL_USE_MODELTRANSLATION = True

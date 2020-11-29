@@ -10,3 +10,6 @@
 
 # wsgi = imp.load_source('wsgi', 'passenger_wsgi.py')
 # application = wsgi.application
+import pymysql
+pymysql.version_info = (1, 4, 2, "final", 0)
+pymysql.install_as_MySQLdb()
