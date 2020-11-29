@@ -100,6 +100,7 @@ DATABASES = {
         #  'TEST': {
         #     'ENGINE': 'django.db.backends.sqlite3',
         #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+<<<<<<< HEAD
 
         # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
         #     'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
@@ -111,11 +112,23 @@ DATABASES = {
           # 'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
         'ENGINE': 'django.db.backends.mysql',
 
+=======
+        # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
+        #     'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
+        #            # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
+          # 'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+>>>>>>> 3bc46573aa6fc31eddc8e0df1358f56b1123c20b
             'NAME': 'navararl_navarardb',
             'USER': 'navararl_navarar',
             'PASSWORD': 'Akpobi101$$',
             'HOST': '127.0.0.1',
             'PORT': '3306',
+<<<<<<< HEAD
+=======
+        #   'ENGINE': 'django.db.backends.postgresql', 'NAME': 'Navaradb', 'USER': 'navara',
+        # 'PASSWORD': 'Akpobi101', 'HOST': 'database-1.cfwr1aitwzcr.us-east-1.rds.amazonaws.com', 'PORT': '5432',
+>>>>>>> 3bc46573aa6fc31eddc8e0df1358f56b1123c20b
 
     
     }
@@ -162,25 +175,34 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join('/home/navararl/public_html/static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     ]
+<<<<<<< HEAD
 
 STATIC_ROOT = os.path.join('/home/navararl/public_html/static')
 
+=======
+>>>>>>> 3bc46573aa6fc31eddc8e0df1358f56b1123c20b
 sentry_sdk.init(
     "https://699d5746e8f64d92b8fa27d6f0072ff6@o482405.ingest.sentry.io/5535764",
     traces_sample_rate=1.0
 )
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3bc46573aa6fc31eddc8e0df1358f56b1123c20b
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'cp163176.hpdns.net'
-EMAIL_PORT = 465
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3bc46573aa6fc31eddc8e0df1358f56b1123c20b
 DEFAULT_FROM_EMAIL = 'Navara <noreply@navarar.live>'
 
 SIMPLE_MAIL_USE_CKEDITOR = True
