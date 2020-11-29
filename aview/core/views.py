@@ -14,9 +14,10 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
-
+from django.template import RequestContext
 from .forms import SignUpForm,PatientForm
 from .tokens import account_activation_token
+from sentry_sdk import capture_message
 # Create your views here.
 def homepage(request):
     return render(request, 'core/frontpage.html')
@@ -193,6 +194,22 @@ def activate(request, uidb64, token):
         return render(request, 'core/activation_invalid.html')
 
 
-
+# def pagerror(request, exception):
+#     
+#     return render(request, "core/404.html", {})
     
 
+def pagerror(request, *args, **argv):
+    response = render(request,'core/400.html',)
+
+    response.status_code = 400
+
+    return response
+
+
+def pagerror2(request, *args, **argv):
+    response = render(request, 'core/500.html',)
+    capture_message("Page not found!", level="error")
+    response.status_code = 500
+
+    return response
