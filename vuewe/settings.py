@@ -12,7 +12,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import sys
+import sentry_sdk
 import environ
+
+from sentry_sdk.integrations.django import DjangoIntegration  
+
+
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -69,7 +74,7 @@ ROOT_URLCONF = 'vuewe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,10 +151,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     ]
-
+sentry_sdk.init(
+    "https://699d5746e8f64d92b8fa27d6f0072ff6@o482405.ingest.sentry.io/5535764",
+    traces_sample_rate=1.0
+)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

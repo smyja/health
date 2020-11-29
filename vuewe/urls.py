@@ -14,22 +14,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
 from django.contrib.auth import views
-from django.urls import path, include
+from django.urls import path, include,re_path
+from django.views.static import serve
 from django.contrib.auth import views as auth_views
 from aview.core.views import *
 from aview.dashboard.views import acceptapp, bookin
 
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
 
+
+handler404 = 'aview.core.views.pagerror'
+handler500 = 'aview.core.views.pagerror2'
 urlpatterns = [
     path('', homepage, name='homepage'),
     path('sent/', activation_sent_view, name="activation_sent"),
     path('activate/<slug:uidb64>/<slug:token>/', activate, name='activate'),
     path('dashboard/', include('aview.dashboard.urls')),
     path('approve/', acceptapp, name = 'approve'),
-    path('addpatient/', addpatient, name = 'addpatient'),
-    
+    path('addpatient/', addpatient, name='addpatient'),
+    path('sentry-debug/', trigger_error),
     path('patient/', patients, name='patients'),
     path('book/', bookin, name='bookin'),
     path('signup/', signup_view, name="signup"),
