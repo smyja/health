@@ -100,14 +100,27 @@ DATABASES = {
         #  'TEST': {
         #     'ENGINE': 'django.db.backends.sqlite3',
         #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+<<<<<<< HEAD
         # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
         #     'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
          'ENGINE': 'django.db.backends.mysql',
+=======
+        'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
+            'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
+                   # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
+          # 'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+>>>>>>> 037f8a7693177d79c6957b5ad6b9f0d3f1e5ed99
             'NAME': 'navararl_navarardb',
             'USER': 'navararl_navarar',
             'PASSWORD': 'Akpobi101$$',
             'HOST': '127.0.0.1',
             'PORT': '3306',
+<<<<<<< HEAD
+=======
+        #   'ENGINE': 'django.db.backends.postgresql', 'NAME': 'Navaradb', 'USER': 'navara',
+        # 'PASSWORD': 'Akpobi101', 'HOST': 'database-1.cfwr1aitwzcr.us-east-1.rds.amazonaws.com', 'PORT': '5432',
+>>>>>>> 037f8a7693177d79c6957b5ad6b9f0d3f1e5ed99
 
         
     
@@ -173,7 +186,11 @@ EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+<<<<<<< HEAD
 DEFAULT_FROM_EMAIL= 'Navara <noreply@navarar.live>'
+=======
+DEFAULT_FROM_EMAIL = 'Navara <noreply@navarar.live>'
+>>>>>>> 037f8a7693177d79c6957b5ad6b9f0d3f1e5ed99
 
 SIMPLE_MAIL_USE_CKEDITOR = True
 SIMPLE_MAIL_USE_MODELTRANSLATION = True

@@ -11,7 +11,11 @@ from django.utils.encoding import force_text
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.utils.encoding import force_bytes
+<<<<<<< HEAD
 from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+=======
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+>>>>>>> 037f8a7693177d79c6957b5ad6b9f0d3f1e5ed99
 from .tokens import account_activation_token
 from django.template.loader import render_to_string
 from django.template import RequestContext
