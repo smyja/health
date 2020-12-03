@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{% url 'notes' profile.slug profile.user.pk %}"><img class="nav-items" src="{% static 'images/doctor.svg'%}" alt=""><span>Add notes</span> </a>
+                        <a href="{% url 'notes' profile.slug profile.user.pk %}"><img class="nav-items" src="{% static 'images/doctor.svg'%}" alt=""><span>Read notes</span> </a>
                     </li>
                 </ul>
             </div>
@@ -144,9 +144,10 @@
                             </ul>
                         </div>
                         <div class="check-box-area">
-                            <button class="check-box">
-                                Check Prescriptions
+                            <button onclick="location.href='{% url 'notes' profile.slug profile.user.pk %}'" class="check-box">
+                                Check Notes
                             </button>
+
                             <button class="check-box">
                                 Check Lab tests
                             </button>

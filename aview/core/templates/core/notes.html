@@ -1,3 +1,82 @@
-{% for g in patientnotes %}
-<li>{{g}}
-    <a href="{% url 'viewnotes' profile.slug profile.user.pk g.pk %}"> Read Notes</a></li>{% endfor %}
+{%load static%}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'styles/note.css'%}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-5.14.0-web/css/all.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h2>VARA</h2>
+            <i class="fas fa-bars" id="menu"></i>
+            <ul id="nav-list" class="hide">
+                <li>
+                    <img style="width: 40px;height: 34px;" src="{% static 'images/ic_outline-home.svg'%}" alt="">
+                    <p>Home</p>
+                </li>
+                <li>
+                    <img style="width: 40px;" src="{% static 'images/mdi_human-male.svg'%}" alt="">
+                    <p>Patients</p>
+                </li>
+                <li>
+                    <img style="width: 40px;" src="{% static 'images/raphael_lab.svg'%}" alt="">
+                    <p>Lab Tests</p>
+                </li>
+                <li>
+                    <img style="width: 40px;height: 27px;" src="{% static 'images/Group.svg'%}" alt="">
+                    <p>Doctors</p>
+                </li>
+            </ul>
+            <div class="nav-footer">
+                <h2>Want more features?</h2>
+                <img src="{% static 'images/wert.png'%}" alt="wert nav">
+                <button>Try out pro</button>
+            </div>
+        </div>
+        <div class="body">
+            <div class="header">
+                <h1>Notes</h1>
+                <div class="circle"></div>
+            </div>
+            <div class="description">
+                <div class="text">
+                    <h2>Patient’s Notes and illness descripton</h2>
+                    <p>Lorem ipsum dolor sit amet, Lectus adipiscing augue vitae sit morbi ultrices mattis morbi sed. Phasellus sit ac sit dictum tellus sagittis.</p>
+                </div>
+
+                <img src="{% static 'images/solid_III 0.png'%}" alt="solid">
+            </div>
+            <div class="notes">
+                <h2>Patient’s Notes</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Id tortor, feugiat scelerisque volutpat tellus at urna ultrices massa.</p>
+            </div>
+            <div>
+
+                {% for g in patientnotes %}
+                <div class="note-item">
+                    <p>{{g}}</p>
+                    <p>{{g.created}}</p>
+                    <p>{{g.doctor}}</p>
+                    <a href="{% url 'viewnotes' profile.slug profile.user.pk g.pk %}" class="btn"> Read Notes</a>
+                </div>{% endfor %}
+            </div>
+        </div>
+    </div>
+    <script>
+        /*Toogle to show and hide menu*/
+        menu = document.getElementById("menu");
+        menu.addEventListener("click", (e) => {
+            document.getElementById("nav-list").classList.toggle("hide");
+        });
+    </script>
+</body>
+
+</html>

@@ -19,7 +19,7 @@ class Profile(AbstractBaseUser):
     last_name = models.CharField(max_length=100, blank=True)
    
     next_of_kin = models.CharField(max_length=100, blank=True)
-    dob = models.CharField(max_length=100, blank=True)
+    dob = models.DateField(max_length=10, blank=True,null=True)
     state = models.CharField(max_length=100, blank=True)
     password = models.CharField(max_length=100, blank=True)
     email = models.EmailField(max_length=150)
@@ -32,7 +32,6 @@ class Profile(AbstractBaseUser):
     slug = models.SlugField(max_length=200, null=True)
     
     USERNAME_FIELD ='user'
-
     def save(self, *args, **kw):
 
         self.slug = slugify(f"{self.last_name}-{self.first_name}")

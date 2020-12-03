@@ -43,14 +43,20 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'phonenumber',
                   'email', 'password1', 'password2', 'address')
       # Add this to check if both passwords are matching or not
-  
+    def clean_email(self):
+        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
+        if email and User.objects.filter(email=email).exclude(username=username).count():
+            raise forms.ValidationError('This email is already in use! Try another email.')
+        return email
 class PatientForm(UserCreationForm):
     first_name = forms.CharField(max_length=100, help_text='First Name')
     last_name = forms.CharField(max_length=100, help_text='Last Name')
     middle_name = forms.CharField(max_length=100, help_text='Middle Name')
     address = forms.CharField(max_length=100, help_text='address')
     next_of_kin = forms.CharField(max_length=100, help_text='Next of kin')
-    dob = forms.CharField(max_length=100, help_text='Date of birth')
+    dob = forms.DateField(help_text='Date of birth',
+                          widget=forms.widgets.DateInput(attrs={'type': 'date'}))
     state = forms.CharField(max_length=100, help_text='State')
     phonenumber = forms.CharField(
         max_length=100, help_text='Enter Phone number')
@@ -130,11 +136,13 @@ class PatientNotesForm(ModelForm):
     patient = forms.ModelChoiceField(queryset=Profile.objects.all())
     patientfullname = forms.CharField(max_length=1000, help_text='First Name')
     doctor = forms.CharField(max_length=100, help_text='address')
-    description =  forms.CharField(max_length=10000,widget=forms.Textarea)
+    description = forms.CharField(max_length=10000, widget=forms.Textarea)
+    
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-    
+        self.fields.DateField(
+            widget=forms.widgets.DateInput(attrs={'type': 'date'}))
         self.fields['illness'].widget.attrs.update(
             {'placeholder': ('illness')})
         self.fields['doctor'].widget.attrs.update(
