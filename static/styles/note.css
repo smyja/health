@@ -1,0 +1,235 @@
+/*My varibles*/
+:root{
+    --green-color: #63BA86;
+    --green-alt-color: #8BC2A1;
+    --orange-color: #F37F55;
+    --gray-color: #C4C4C4;
+    --gray-alt-color: #E5E5E5;
+    --clr-gray-light: #d7dfe2;
+}
+/*Setting body*/
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Segoe UI;
+    font-style: normal;
+}
+/*Main div*/
+.container{
+    display: flex;
+    justify-content: start;
+}
+/*Nav styles in desktop computers*/
+.navbar{
+    background-color: var(--green-color);
+    width: 347px;
+    border-radius: .5em;
+    position: relative;
+}
+.navbar > h2{
+    text-align: left;
+    padding: 0 1.5em;
+    margin-bottom: -10px;
+}
+.navbar > .fa-bars{
+    display:none;
+}
+.navbar ul{
+    background-color: var(--green-color);
+    list-style: none;
+    color: white;
+    padding: 0px;
+}
+.navbar .nav-icons{
+    width: 54px;
+}
+.navbar > ul  li{
+    display: flex;
+    align-items: center;
+    width: 146px;
+    height: 42px;
+    margin: 13px 1.5em;
+    margin-left: 14px;
+}
+.navbar > ul  li:hover{
+    background-color: var(--green-alt-color);
+    transition: 0.2s;
+    font-weight: 900;
+}
+.navbar > .nav-footer{
+    background-color: #D2F4E0;
+    padding: .5em 1.5em 1em;
+    border-radius: .4em;
+    position: absolute;
+    /*width: 163px;*/
+    width: 100px;
+    left: 17px;
+    bottom: 28px;
+}
+.navbar > .nav-footer h2{
+    color: var(--green-color);
+}
+.navbar > .nav-footer img{
+    /*width: 152px;*/
+    width: 99px;
+}
+.navbar > .nav-footer button{
+    background: var(--green-color);
+    padding: 1em;
+    width: 100%;
+    border-radius: .5em;
+    border: none;
+    color: white;
+}
+.body{
+    margin-left:1em;
+    padding-right: 2em;
+    padding-bottom: 6em;
+}
+/*Body content info in simple page: Styles*/
+.body > .header{
+    margin-bottom: 10px;
+    border-bottom: 1px solid #E4D7D7;
+}
+.body > .header > h1{
+    color: var(--green-color);
+    font-size: 24px;
+}
+.body > .header > .circle{
+    background-color: var(--gray-color);
+    width: 55px;
+    height: 52px;
+    border-radius: 50%;
+    position: absolute;
+    right: 37px;
+    top: 9px;
+}
+.description{
+    padding: 1em 1.5em 1em 2.5em;
+    background-color: var(--green-color);
+    border-radius: .5em;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+}
+.description > .text{
+    margin-right: 10px;
+}
+.description > .text h2{
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 900;
+}
+.description > .text p{
+    text-align: left;
+    width: 83.7%;
+    font-weight: 350;
+    line-height: 1.5;
+}
+.description img{
+    width: 100%;
+    max-width: calc(100%/2.3);
+}
+.notes{
+    padding: 1em;
+    padding-left: 2.5em;
+}
+.notes h2{
+    font-weight: 900;
+}
+.notes p{
+    width: 90%;
+}
+/*List to notes*/
+.note-item{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    margin: 10px 0px 15px 40px;
+    box-shadow: 0px 0px 5px var(--clr-gray-light);
+}
+.note-item p{
+    margin: 17px;
+    color: var(--green-color);
+}
+.btn{
+    background-color: var(--orange-color);
+    border: none;
+    padding: 0.7em 2em;
+    margin: 1em 17px;
+    color: white;
+    font-weight: 900;
+}
+    
+@media(max-width:800px){
+    .navbar{
+        background-color: var(--green-color);
+        position: fixed;
+        width: 100%;   
+        border-radius: 0;
+        top: 0px;
+        max-width: none;
+        height: 67px;
+    }
+    .navbar > h2{
+        color: white;
+    }
+    .navbar > .fa-bars{
+        display: block;
+        position: absolute;
+        right: 40px;
+        top: 18px;
+        font-size: 37px;
+        color: white;
+        cursor: pointer;
+    }
+    .navbar > .nav-footer{
+        display: none;
+    }
+    .body{
+        padding-top: 5em;
+    }
+    .hide{
+        display: none;
+    }   
+    
+}
+@media(max-width:500px){
+    .description img{
+        display:none;
+    }
+    .body > .circle{
+        display:none;
+    }
+    table  tr  td{
+        padding: 5px;
+    }
+    .body > table button{
+        padding: .7em;
+    }
+    .note-item{
+        padding: 0px;
+        font-size: 14px;
+        margin: 15px 0px;
+    }
+    .btn{
+        font-size: 14px;
+        margin: 28px 17px;
+        padding: 0px 17px;
+    }
+    .notes{
+        padding-left: 0px;
+    }
+}
+@media(max-width:400px){
+    .body > table{
+        padding-left: .9em;
+        font-size: 11px;
+    }
+    .body > table button{
+        font-size: 11px;
+    }
+    .note-item{
+        font-size: 11px;
+    }
+}
