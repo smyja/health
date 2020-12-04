@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'aview.dashboard',
     'simple_mail',
     'ckeditor',
-    'modeltranslation'
+    'modeltranslation',
     'django_extensions'
 ]
 
