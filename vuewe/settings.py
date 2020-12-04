@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'simple_mail',
     'ckeditor',
     'modeltranslation'
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
