@@ -28,7 +28,7 @@ class Profile(AbstractBaseUser):
     address = models.CharField(max_length=255, null=True)
     country = models.CharField(max_length=255, null=True)
     phonenumber = models.CharField(max_length=20, null=True)
-    appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
+    #appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
     slug = models.SlugField(max_length=200, null=True)
     
     USERNAME_FIELD ='user'
