@@ -1,18 +1,18 @@
 from django.db import models
-#from django.contrib.auth.models import User
-#from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 from django.utils.text import slugify
 from django.contrib.auth.models import AbstractBaseUser
 
-#get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
+get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
 
 
 # superusers = User.objects.filter(is_superuser=True)
 class Profile(AbstractBaseUser):
-    #user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     last_name = models.CharField(max_length=100, blank=True)
     first_name = models.CharField(max_length=100, blank=True)
     middle_name = models.CharField(max_length=100, blank=True)
@@ -28,7 +28,7 @@ class Profile(AbstractBaseUser):
     address = models.CharField(max_length=255, null=True)
     country = models.CharField(max_length=255, null=True)
     phonenumber = models.CharField(max_length=20, null=True)
-    #appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
+    appointment_with = models.ManyToManyField(User, related_name='appontment_with', blank=True)
     slug = models.SlugField(max_length=200, null=True)
     
     USERNAME_FIELD ='user'
