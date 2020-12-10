@@ -15,7 +15,7 @@ import sys
 import sentry_sdk
 import environ
 
-from sentry_sdk.integrations.django import DjangoIntegration  
+from sentry_sdk.integrations.django import DjangoIntegration
 
 
 env = environ.Env(
@@ -25,7 +25,7 @@ env = environ.Env(
 # reading .env file
 environ.Env.read_env()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 # Quick-start development settings - unsuitable for production
@@ -56,8 +56,7 @@ INSTALLED_APPS = [
     'aview.dashboard',
     'simple_mail',
     'ckeditor',
-    'modeltranslation',
-    'django_extensions'
+    'modeltranslation'
 ]
 
 MIDDLEWARE = [
@@ -106,21 +105,9 @@ DATABASES = {
         #     'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
         # 'ENGINE': 'django.db.backends.mysql',
 
-        # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
-        #   'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
-                   # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
-          # 'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
-
-        # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
-        #     'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
-        #            # 'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
-          # 'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
-        'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'navararl_navarardb',
-            'USER': 'navararl_navarar',
-            'PASSWORD': 'Akpobi101$$',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql', 'NAME': 'NavaraDb', 'USER': 'postgres',
+          'PASSWORD': 'Akpobi101$', 'HOST': 'localhost', 'PORT': '5432',
+  
 
         #   'ENGINE': 'django.db.backends.postgresql', 'NAME': 'Navaradb', 'USER': 'navara',
         # 'PASSWORD': 'Akpobi101', 'HOST': 'database-1.cfwr1aitwzcr.us-east-1.rds.amazonaws.com', 'PORT': '5432',
@@ -169,9 +156,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    ]
+]
 
 
 STATIC_ROOT = os.path.join('/home/navararl/public_html/static')
@@ -180,7 +168,7 @@ STATIC_ROOT = os.path.join('/home/navararl/public_html/static')
 sentry_sdk.init(
     "https://699d5746e8f64d92b8fa27d6f0072ff6@o482405.ingest.sentry.io/5535764",
     traces_sample_rate=1.0
-    )
+)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST')

@@ -170,7 +170,7 @@ def patients(request):
         'appointment_number': appointment_number,
 
     }
-    return render(request, 'core/patient.html', context)
+    return render(request, 'core/patients.html', context)
 
 
 def activation_sent_view(request):
