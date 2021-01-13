@@ -1,206 +1,270 @@
-{%load static%}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navara Dashboard</title>
-
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{% static 'styles/style.css'%}">
-    <link rel="stylesheet" href="{% static 'styles/responsive.css'%}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+	<!-- All CSS link is here -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/responsive.css">
 </head>
-
 <body>
-    <div id="ajaxContent">
-        <div class="menu-btn">
-            <img src="{% static 'images/menu-bar.png'%}" alt="">
-        </div>
+	<div class="main desktop_view">
+		<div class="sub flex">
+			<div class="left">
+				<div class="sub_left">
+					<div class="logo">
+						<p>Navara</p>
+					</div>
+					<div class="menu_bar">
+						<ul>
+							<li><a href="#" class="flex">
+								<img src="images/menu1.png" alt="menu1">
+								<span>Home</span>
+							</a></li>
+							<li class="patients"><a href="#" class="flex">
+								<img src="images/menu2.png" alt="menu1" class="same">
+								<span>Patients</span>
+							</a></li>
+							<li><a href="#" class="flex">
+								<img src="images/menu3.png" alt="menu1">
+								<span>Doctors</span>
+							</a></li>
+							<li><a href="#" class="flex">
+								<img src="images/menu4.png" alt="menu1">
+								<span class="lab">Lab Test</span>
+							</a></li>
+							<li><a href="#" class="flex">
+								<img src="images/menu2.png" alt="menu1" class="same">
+								<span>Add Patient</span>
+							</a></li>
+							<li><a href="#" class="flex">
+								<img src="images/menu2.png" alt="menu1" class="same">
+								<span>Payments</span>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<section class="nav flex">
+					<p>Irua Clinc</p>
+					<div class="text_box">
+						<input type="text">
+					</div>
+					<div class="round"></div>
+				</section>
+				<section class="body">
+					<div class="another flex">
+						<div class="first common flex">
+							<div class="item patient">
+								<p>Total Patients</p>
+								<div class="img flex">
+									<img src="images/body1.png" alt="body1">
+									<h4>7</h4>
+								</div>
+							</div>
+							<div class="item booking">
+								<p>Total Booking</p>
+								<div class="img flex">
+									<img src="images/body2.png" alt="body1">
+									<h4>7</h4>
+								</div>
+							</div>
+							<div class="item gender">
+								<p>Patients by Gender</p>
+								<div class="img">
+									<img src="images/Ellipse 5.png" alt="Ellipse">
+									<div class="img2">
+										<img src="images/Ellipse 6.png" alt="Ellipse">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="middle common flex">
+							<div class="item doctor">
+								<p>Doctors</p>
+								<div class="img flex">
+									<img src="images/body3.png" alt="body1">
+									<h4>7</h4>
+								</div>
+							</div>
+							<div class="item count flex">
+								<div class="text">
+									<ul>
+										<li><p>Todays Patients</p></li>
+										<li><p>Total Non-Medical Staffs</p></li>
+										<li><p>Total Nurses</p></li>
+										<li><p>Total Doctors</p></li>
+									</ul>
+								</div>
+								<div class="number">
+									<ul>
+										<li><p>13</p></li>
+										<li><p>13</p></li>
+										<li><p>13</p></li>
+										<li><p>13</p></li>
+									</ul>
+								</div>
+							</div>
+							<div class="item diagnosis">
+								<p>Top Diagnosis</p>
+								<div class="img">
+									<img src="images/Ellipse 5.png" alt="Ellipse">
+									<div class="img2">
+										<img src="images/Ellipse 6.png" alt="Ellipse">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="last common flex">
+							<div class="item approval">
+								<p>Pending Approval</p>
+								<div class="img flex">
+									<img src="images/body4.png" alt="body1">
+									<h4>7</h4>
+								</div>
+							</div>
+							<div class="item payment flex">
+								<div class="text">
+									<ul>
+										<li><p>Todays Payments</p></li>
+										<li><p>Month's Payments</p></li>
+										<li><p>Todays Payments</p></li>
+									</ul>
+								</div>
+								<div class="number">
+									<ul>
+										<li><p>NGN 1,2,000,000</p></li>
+										<li><p>NGN 200,000</p></li>
+										<li><p>NGN 20,000</p></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
 
-        <div class="sidebar">
-            <div class="container">
-                <!-- Navigation -->
-                <div class="main-nav">
-                    <a href="" class="logo"><span><img src="{% static 'images/logo.svg'%}" alt=""></span><span
-                        class="logo-text">Navara</span></a>
-                    <ul class="main-menu">
-                        <li id="home">
-                            <a href="#"><img class="nav-items" src="{% static 'images/home.svg'%}" alt=""><span>Home</span></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'addpatient' %}"><img class="nav-items" src="{% static 'images/male.svg'%}" alt=""><span>Add Patients</span></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}"><img class="nav-items" src="{% static 'images/doctor.svg'%}" alt=""><span>Logout</span> </a>
-                        </li>
-                        <li>
-                            <a href="{% url 'patients' %}" class=" link " <img class="nav-items " src="{% static 'images/lab.svg'%} " alt=" "><span>Patients</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+	<div class="main mobile_view">
+		<section class="nav">
+			<p>Irua Clinc</p>
+			<div class="sub_main">
 
-            </div>
-        </div>
+					<nav class="mobile-nav-wrap" role="navigation">
+					  <ul class="mobile-header-nav">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Patients</a></li>
+						<li><a href="#">Doctors</a></li>
+						<li><a href="#">Lab Test</a></li>
+						<li><a href="#">Add Patients</a></li>
+						<li><a href="#">Payments</a></li>
+					  </ul>
+					</nav>
+				  
+					<a class="mobile-menu-toggle js-toggle-menu hamburger-menu" href="#">
+					  <span class="menu-item"></span>
+					  <span class="menu-item"></span>
+					  <span class="menu-item"></span>
+					</a>
+					
+			</div>
+		</section>
+		<section class="body">
+			<div class="sub_body">
+				<div class="item patient">
+					<p>Total Patients</p>
+					<div class="img flex">
+						<img src="images/body1.png" alt="body1">
+						<h4>7</h4>
+					</div>
+				</div>
+				<div class="item doctor">
+					<p>Doctors</p>
+					<div class="img flex">
+						<img src="images/body3.png" alt="body1">
+						<h4>7</h4>
+					</div>
+				</div>
+				<div class="item booking">
+					<p>Total Booking</p>
+					<div class="img flex">
+						<img src="images/body2.png" alt="body1">
+						<h4>7</h4>
+					</div>
+				</div>
+				<div class="item approval">
+					<p>Pending Approval</p>
+					<div class="img flex">
+						<img src="images/body4.png" alt="body1">
+						<h4>7</h4>
+					</div>
+				</div>
+				<div class="item count flex">
+					<div class="text">
+						<ul>
+							<li><p>Todays Patients</p></li>
+							<li><p>Total Non-Medical Staffs</p></li>
+							<li><p>Total Nurses</p></li>
+							<li><p>Total Doctors</p></li>
+						</ul>
+					</div>
+					<div class="number">
+						<ul>
+							<li><p>13</p></li>
+							<li><p>13</p></li>
+							<li><p>13</p></li>
+							<li><p>13</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item payment flex">
+					<div class="text">
+						<ul>
+							<li><p>Todays Payments</p></li>
+							<li><p>Month's Payments</p></li>
+							<li><p>Todays Payments</p></li>
+						</ul>
+					</div>
+					<div class="number">
+						<ul>
+							<li><p>NGN 1,2,000,000</p></li>
+							<li><p>NGN 200,000</p></li>
+							<li><p>NGN 20,000</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="item diagnosis">
+					<p>Top Diagnosis</p>
+					<div class="img">
+						<img src="images/Ellipse 5.png" alt="Ellipse">
+						<div class="img2">
+							<img src="images/Ellipse 6.png" alt="Ellipse">
+						</div>
+					</div>
+				</div>
+				<div class="item gender">
+					<p>Patients by Gender</p>
+					<div class="img">
+						<img src="images/Ellipse 5.png" alt="Ellipse">
+						<div class="img2">
+							<img src="images/Ellipse 6.png" alt="Ellipse">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div> 
 
-        <div class="top-content ">
-            <div class="container ">
-                <header class="top-bar ">
-                    <h1>Hi,{{request.user.username}}</h1>
-                    <div>
-                        <input type="text " placeholder=" ">
-                        <img src="{% static 'images/girl.png'%} " alt=" ">
-                    </div>
-                </header>
-            </div>
-            <hr style="color: #dee1e1;border-top: 0px solid #151717; ">
-        </div>
-        <div class="content ">
-            <div class="mid-content ">
-                <div class="container ">
-
-
-                    <div class="content ">
-                        <div class="boxyy ">
-
-                            <ul>
-                                <div class="fl ">
-                                    <li>
-                                        <h1 class="buto ">Total patients</h1><span class="iconify " data-inline="false " data-icon="bx:bxs-first-aid " style="color: #63ba86; padding-left: 18px; font-size: 40px; "></span>
-                                        <h1 class="num ">{{appointment_number}}
-                                        </h1>
-                                    </li>
-                                    <li>
-                                        <h1 class="buto ">Total patients</h1><span class="iconify " data-inline="false " data-icon="bx:bxs-first-aid " style="color: #63ba86; padding-left: 18px; font-size: 40px; "></span>
-                                        <h1 class="num ">7
-                                        </h1>
-                                    </li>
-                                </div>
-
-
-                                <li style="height: 150px; ">
-                                    <div style="display: flex;padding-top: 10px; ">
-                                        <h1 class="buto ">Total patients</h1>
-                                        <h1 class="numm ">7</h1>
-                                    </div>
-                                    <div style="display: flex; flex-wrap: wrap;padding-top: 10px;padding-right: 250px; ">
-                                        <h1 class="buto ">Non-medical staffs</h1>
-                                        <h1 class="numm " style="padding-left: 112px; ">7</h1>
-                                    </div>
-
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        {% for appointment in appointments %}
-        <h2 style="font-size: 24px;font-weight: 500;color: #63BA86;margin-top: 20px;padding: 10px;margin-left: 183px; ">Pending appointments
-        </h2>
-        <footer class="bottom-content ">
-            <div class="appointment ">
-                <div class="container ">
-
-
-                    <div class="appointment-box ">
-                        <div class="appointment-left ">
-                            <img src="{% static 'images/leaf.svg'%} " alt=" ">
-                            <h3><a href="{% url 'profilepk' slug=appointment.patient.slug pk=appointment.patient.pk %}" style="color: #63BA86; ">{{appointment.patient.first_name}}</a>
-                            </h3>
-                            <h3>12/10/2020</h3>
-                        </div>
-                        <form action="{% url 'approve' %}" method="post"> {% csrf_token %}
-                            <div class="appointment-right ">
-                                <button class="decline-btn ">Decline</button>
-                                <input type="hidden" name="id" value="{{appointment.id}}"><button class="approve-btn ">Approve</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        {% endfor %}
-        <script type="text/javascript ">
-            document.querySelector('.menu-btn').addEventListener('click', () => document.querySelector('.sidebar').classList.toggle('show'));
-        </script>
-        <!-- Code injected by live-server -->
-
-        <script type="text/javascript ">
-            $(document).ready(function() {
-                $('.main-menu > li').click(function() {
-                    //set localStorage
-                    localStorage.setItem("clicked ", $(this).attr("id "))
-                        //remove from all li
-                    $('li').removeClass("foocus ")
-                        //Add class to the clicked li
-                    $(this).addClass("foocus ")
-                });
-
-                //get class on load
-                var foocus = localStorage.getItem("clicked ")
-                foocus ? $("# " + foocus).addClass("foocus ") : $('#home').addClass("foocus ")
-            })
-        </script>
-        <script type="text/javascript ">
-            document.querySelector('.menu-btn').addEventListener('click', () => document.querySelector('.sidebar').classList.toggle('show'));
-        </script>
-        <script>
-            $("#termsLink ").click(e => {
-                e.preventDefault();
-                history.pushState({
-                    "page ": "terms "
-                }, '', '/terms');
-                $('#ajaxContent').load('terms #ajaxContent');
-                $("#head_name ").html("Terms ")
-            });
-
-            $("#aboutLink ").click(e => {
-                e.preventDefault();
-                history.pushState({
-                    "page ": "about "
-                }, '', '/about');
-                $('#ajaxContent').load('about #ajaxContent');
-                $("#head_name ").html("About ")
-            });
-
-            $("#privacyLink ").click(e => {
-                e.preventDefault();
-                history.pushState({
-                    "page ": "privacy "
-                }, '', '/privacy');
-                $('#ajaxContent').load('privacy #ajaxContent');
-                $("#head_name ").html("Privacy ")
-            });
-
-            $("#back_icon ").click(e => {
-                history.back();
-            });
-
-            window.addEventListener('popstate', function(e) {
-                console.log(e.state.page)
-                if (e.state.page == 'terms') {
-                    $('#ajaxContent').load("terms #ajaxContent ");
-                    $("#head_name ").html("Terms ")
-                }
-                if (e.state.page == 'privacy') {
-                    $('#ajaxContent').load('privacy #ajaxContent');
-                    $("#head_name ").html("Privacy ")
-                }
-                if (e.state.page == 'about') {
-                    $('#ajaxContent').load('about #ajaxContent');
-                    $("#head_name ").html("About ")
-                }
-
-            });
-        </script>
-    </div>
+		<!-- All JS link is here -->
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/script.js"></script>
 </body>
-
 </html>

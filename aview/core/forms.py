@@ -141,8 +141,7 @@ class PatientNotesForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields.DateField(
-            widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+
         self.fields['illness'].widget.attrs.update(
             {'placeholder': ('illness')})
         self.fields['doctor'].widget.attrs.update(
@@ -171,7 +170,8 @@ class EditProfileForm(UserCreationForm):
     last_name = forms.CharField(max_length=100, help_text='Last Name')
     address = forms.CharField(max_length=100, help_text='address')
     next_of_kin = forms.CharField(max_length=100, help_text='Next of kin')
-    dob = forms.CharField(max_length=100, help_text='Date of birth')
+    dob = forms.DateField(help_text='Date of birth',
+                          widget=forms.widgets.DateInput(attrs={'type': 'date'}))
     state = forms.CharField(max_length=100, help_text='State')
     password1 = forms.CharField(required=False, max_length=100, help_text='State')
     password2 = forms.CharField(

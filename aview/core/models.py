@@ -84,6 +84,16 @@ class Note(models.Model):
     def __str__(self):
         return f"{self.illness}"
 
+
+class wallet(models.Model):
+    account_number = models.IntegerField()
+    balance = models.IntegerField()
+    
+    def __str__(self):
+        return f"{self.account_number}"
+
+
+
    
 
 
