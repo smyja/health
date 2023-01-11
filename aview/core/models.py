@@ -7,8 +7,6 @@ from django.conf import settings
 from django.utils.text import slugify
 from django.contrib.auth.models import AbstractBaseUser
 
-get_user_model().objects.filter(is_superuser=True).update(first_name='Super', last_name='User')
-
 
 # superusers = User.objects.filter(is_superuser=True)
 class Profile(AbstractBaseUser):
@@ -51,9 +49,6 @@ class Profile(AbstractBaseUser):
         """
         full_name = '%s %s %s' % (self.first_name, self.last_name, self.middle_name)
         return full_name.strip()
-
-
-
 
 
 STATUS_CHOICES = (
