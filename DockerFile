@@ -1,0 +1,43 @@
+FROM library/python:3.8-slim-buster
+
+RUN apt-get update \
+    # dependencies for building Python packages
+    && apt-get install -y build-essential \
+    # psycopg2 dependencies
+    && apt-get install -y libpq-dev \
+    # Translations dependencies
+    && apt-get install -y gettext \
+    && apt-get install -y libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info \
+    # cleaning up unused files
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+COPY ./requirements.txt /requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt \
+    && rm -rf /requirements.txt
+
+COPY . /usr/src/app
+
+EXPOSE 80
+ARG SECRET_KEY
+ARG DEBUG
+ARG CAPROVER_GIT_COMMIT_SHA
+ARG EMAIL_PORT
+ARG EMAIL_HOST
+ARG EMAIL_HOST_USER
+ARG EMAIL_HOST_PASSWORD
+
+ENV SECRET_KEY=$SECRET_KEY
+ENV CAPROVER_GIT_COMMIT_SHA=$CAPROVER_GIT_COMMIT_SHA
+ENV DEBUG=$DEBUG
+ENV EMAIL_PORT=$EMAIL_PORT
+ENV EMAIL_HOST=$EMAIL_HOST
+ENV EMAIL_HOST_USER=$EMAIL_HOST_USER
+ENV EMAIL_HOST_PASSWORD=$EMAIL_HOST_PASSWORD
+
+
+
+CMD ["sh", "./runserver.sh"]
