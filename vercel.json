@@ -24,7 +24,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "vuewe/wsgi.py"
+            "dest": "pricebunny/wsgi.py"
         }
     ]
 }
