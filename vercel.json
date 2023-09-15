@@ -5,7 +5,7 @@
             "src": "vuewe/wsgi.py",
             "use": "@vercel/python",
             "config": {
-                "maxLambdaSize": "100mb",
+                "maxLambdaSize": "15mb",
                 "runtime": "python3.9"
             }
         },
