@@ -6,3 +6,4 @@ This is a web app built to book appointments at hospitals and store patients dat
 Demo: https://clairevara.live/
 
 NB: Database is not connected on the live link.
+Start the server with  ```python manage.py runserver --settings=vuewe.localset.dev```
