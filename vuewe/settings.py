@@ -88,7 +88,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'vuewe.wsgi.application'
+WSGI_APPLICATION = 'vuewe.wsgi.app'
 
 
 # Database
